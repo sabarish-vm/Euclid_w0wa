@@ -11,7 +11,7 @@ from cosmicfishpie.fishermatrix import cosmicfish
 #Dictionaries for translation
 
 obs_dict = {'GCsp' : ['GCsp'], 'WLxGCph' : ['WL', 'GCph'], 'WL' : ['WL'], 'GCph' : ['GCph']}
-derivatives_default = {'GCsp' : 'own' , 'WL' : '3PT','WLxGCph' : '3PT','GCph' : '3PT','WL':'3PT' }
+derivatives_default = {'GCsp' : 'own' , 'WLxGCph' : '3PT','GCph' : '3PT','WL':'3PT' }
 paths_dict = {'WL':'wl_only','WLxGCph':'photometric','GCsp':'spectroscopic'}
 ext_default = '../../../input_4_cast/output/{codename}_w0wa_{precision}'
 precision_def = ['HP']
