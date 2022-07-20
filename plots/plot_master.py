@@ -1,5 +1,4 @@
 import os, sys
-import numpy as np
 from re import A
 import inspect
 from pathlib import Path
@@ -69,8 +68,7 @@ def plotter(fish_files,labels,pars,outpath='automatic',script_name='automatic',e
     else : pass
 
     cosmo_names = ['Omegam', 'Omegab', 'ns', 'h','sigma8','w0','wa']
- #   nuisance_names = list( np.subtract(np.array(pars),np.array(cosmo_names))  )
-    nuisance_names = ['lnbgs8_1', 'lnbgs8_2', 'lnbgs8_3', 'lnbgs8_4', 'Ps_1', 'Ps_2', 'Ps_3', 'Ps_4']
+    nuisance_names = list( set(pars) - set(cosmo_names)  )
     fgroup=cfa.CosmicFish_FisherAnalysis()
     for fii in fish_files:
         ftesta = cfm.fisher_matrix(file_name=fii)
