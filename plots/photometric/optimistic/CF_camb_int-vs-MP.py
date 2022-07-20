@@ -13,13 +13,14 @@ error_only = args.error_only
 from plot_master import plotter
 
 fish_files =  [
-    '../../../results/cosmicfish_internal/photometric/pessimistic/CosmicFish_v0.9_w0wa_internal_class-Pessimistic-3PT_WLGCph_fishermatrix.txt',
-    '../../../results/cosmicfish_internal/photometric/pessimistic/CosmicFish_v0.9_w0wa_internal_camb-Pessimistic-3PT_WLGCph_fishermatrix.txt'
+    '../../../results/cosmicfish_internal/photometric/optimistic/CosmicFish_v0.9_w0wa_internal_camb-Optimistic-3PT_WLGCph_fishermatrix.txt',
+    '../../../results/montepython_fisher/photometric/optimistic/fisher.mat'
               ]
 
-labels=  [r'CF_int_class XCph pess',
-          r'CF_int_camb Xcph pess']
+labels = [r'CF_int_camb XCph opt',
+          r'MP XCph opt' ]
 
-cutnames=['Omegam', 'Omegab', 'ns', 'h','sigma8','w0', 'wa', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
+cutnames=['w0', 'wa', 'Omegam', 'Omegab', 'ns', 'h','sigma8', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
 
 plotter(fish_files=fish_files,labels=labels,pars=cutnames,error_only=error_only) 
+
