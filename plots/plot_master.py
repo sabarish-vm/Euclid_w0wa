@@ -92,12 +92,15 @@ def plotter(fish_files,labels,pars,outpath='automatic',script_name='automatic',e
             'plot_method': 'Gaussian',
             'axis_custom_factors' : {'all':4},
             'outpath': outpath,
-            'outroot': script_name + '_' + 'cosmo_and_nuisance'
+            'outroot': script_name + '_' + 'cosmo_and_nuisance',
+            'param_labels' : pars
             }
 
     fish_plotter = cfp.fisher_plotting(**pessions)
     if error_only :
         fish_plotter.compare_errors({'save_error':True})
+        fish_plotter.load_gaussians()
+        fish_plotter.matrix_ratio()
     else :
         fish_plotter.load_gaussians()
         fish_plotter.plot_fisher(filled=True)
