@@ -17,3 +17,5 @@ show the output that we obtained and that you should be able to reproduce.
     plots/
 
 contains comparison plots.
+
+Final table comparing all codes in google sheets : [Google sheets link](https://docs.google.com/spreadsheets/d/117cMd-qJkS1alytJ8LeKFIBRoaTKbJfT/edit?usp=sharing&ouid=116025791120069747063&rtpof=true&sd=true)
