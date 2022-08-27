@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+*testing*
+2022*.txt
+2022*.paramnames
