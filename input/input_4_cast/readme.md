@@ -33,14 +33,13 @@ Go to the input_4_cast directory to run the code, and check that you have correc
 
     Then run with e.g.
 
-        python3 run.py ../Euclid_w0wa/input/input_4_cast/camb_w0wa_LP.ini
+        python3 run.py ../Euclid_w0wa/input/input_4_cast/camb_w0wa_HP.ini
 
 -----------------------------
 
 * For comparing CLASS and CAMB files, run e.g.
 
-    python3 compare.py --save_plots --threshold 0.1 output/default_camb_euclid_WP3_LP output/default_class_euclid_WP3_LP
-
+    python3 compare.py --save_plots --threshold 0.01 output/camb_w0wa_HP output/class_w0wa_HP
 
     All spectra should agree very well (typically better than 0.1% for
     the linear spectrum with MP or HP)
