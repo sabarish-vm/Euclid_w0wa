@@ -1,8 +1,10 @@
 import numpy as np
 from matplotlib import cm,colors
 from matplotlib.colors import ListedColormap
+from matplotlib import pyplot as plt
 from itertools import combinations as cb
-
+import os
+outpath = os.path.realpath(__file__)
 
 types = ['All Pars', 'Cosmo with fixed Nuisance', 'Cosmo with marginalized Nuisance', 'Nuisance with fixed Nuisance'] 
 codes = ['Class EXT','Class INT','MP','Camb EXT' , 'Camb INT']
@@ -12,25 +14,11 @@ name_to_cell = {'Class EXT':'class_ext','Class INT' : 'class_int', 'MP':'MP',
 'Camb EXT' : 'camb_ext','Camb INT' : 'camb_int'}
 all_combinations = list(cb(codes,2))
 
-colormap = cm.get_cmap('RdYlGn')(np.linspace(0,1,500))[::-1]
-gr = colormap[0:120]
-ora = colormap[370:400]
-rd = colormap[400:500]
-nmap = np.concatenate((gr,ora,rd),axis=0)
-
-greenmap = ListedColormap(gr)
-orangemap = ListedColormap(ora)
-redmap = ListedColormap(rd)
-newmap = ListedColormap(nmap)
-norm_green = colors.Normalize(vmin=0, vmax=10, clip=True)
+greenmap = ListedColormap(cm.get_cmap('Greens')(np.linspace(0,1,500))[250:400])
+norm_green = colors.Normalize(vmin=0., vmax=13., clip=True)
 mapper_green = cm.ScalarMappable(norm=norm_green, cmap=greenmap)
-norm_orange = colors.Normalize(vmin=10, vmax=20, clip=True)
-mapper_orange = cm.ScalarMappable(norm=norm_orange, cmap=orangemap)
-norm_red = colors.Normalize(vmin=30, vmax=70, clip=True)
-mapper_red = cm.ScalarMappable(norm=norm_red, cmap=redmap)
 
-
-def _hexcolor(value,mapper):
+def hexcolor(value,mapper):
 
     r,g,b,a = mapper.to_rgba(value)
     r = int(r*255)
@@ -39,24 +27,6 @@ def _hexcolor(value,mapper):
 
     return "#%s%s%s" % tuple([hex(c)[2:].rjust(2, "0") for c in (r, g, b)])
  
-def color_map(v):
-
-    try :
-        if v >0 and v <= 10.0 :
-            color = _hexcolor(v,mapper_green)
-            return f"background-color: " + color
-        elif v>10.0 and v <= 30.0 :
-            color=_hexcolor(v,mapper_orange)
-            return f"background-color: " + color
-        elif v>30.0 and v<99.0 :
-            color=_hexcolor(v,mapper_red)
-            return f"background-color: " + color
-        else :
-            return None
-    except :
-        return None
-
-
 def write_data(df,category,files) :
    for cell1,cell2 in all_combinations :
     name1 = name_to_cell[cell1]
@@ -65,5 +35,18 @@ def write_data(df,category,files) :
         if name1 in file and name2 in file and category in file :
             contents = np.loadtxt(file)
             max_val = np.amax(np.abs(contents))
-            df[cell1][cell2] = max_val
-            df[cell2][cell1] = max_val
+            df.at[cell1,cell2] = max_val
+            df.at[cell2,cell1] = max_val
+
+def save_table(df,filename,save=True) :
+    vals = np.around(df.values,2)
+    fig,ax = plt.subplots(figsize=(4,1))
+    ax.axis('tight')
+    ax.axis('off')
+    cellcolors = np.vectorize(hexcolor)(np.copy(vals),mapper_green)
+    the_table=ax.table(cellText=vals, rowLabels=df.columns, colLabels=df.columns, 
+                        loc='center', 
+                        cellColours=cellcolors,
+                        )                  
+    if save : fig.savefig('table_'+filename+'.pdf',bbox_inches = 'tight')
+    return fig,ax
