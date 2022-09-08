@@ -38,12 +38,12 @@ for line in lines:
     elif "['sigma8']" in line:
         fiducial = ((line.split("=")[1][2:-2]).split(",")[0]).strip()
         o.write(r'sigma8    \sigma_8    '+fiducial+'\n')
-    elif "['N_eff_camb']" in line:
-        fiducial = ((line.split("=")[1][2:-2]).split(",")[0]).strip()
-        o.write(r'Neff    N_\mathrm{eff}    '+fiducial+'\n')
-    elif "['m_nu_camb']" in line:
-        fiducial = ((line.split("=")[1][2:-2]).split(",")[0]).strip()
-        o.write(r'mnu    M_\nu    '+fiducial+'\n')
+    #elif "['N_eff_camb']" in line:
+    #    fiducial = ((line.split("=")[1][2:-2]).split(",")[0]).strip()
+    #    o.write(r'Neff    N_\mathrm{eff}    '+fiducial+'\n')
+    #elif "['m_nu_camb']" in line:
+    #    fiducial = ((line.split("=")[1][2:-2]).split(",")[0]).strip()
+    #    o.write(r'mnu    M_\nu    '+fiducial+'\n')
     elif "['Omega_m_camb']" in line:
         fiducial = ((line.split("=")[1][2:-2]).split(",")[0]).strip()
         o.write(r'Omegam    \Omega_{\mathrm{m}, 0}    '+fiducial+'\n')
