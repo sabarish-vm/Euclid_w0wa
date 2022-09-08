@@ -1,7 +1,9 @@
-**Git version commit: 2f8874188254fee73d3f9781abf9e88c6715803a 
+**Git version commit: 5d2290cdf641eaecd84c46d3064db111cb2b065a 
 **Observables: WLGCph 
 ### CosmicFish settings ###
 AP_effect:True
+FoG_switch:True
+GCsp_linear:False
 accuracy:1
 activateMG:False
 bfs8terms:True
