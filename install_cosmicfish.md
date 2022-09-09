@@ -3,7 +3,7 @@ For this project you should use (for the moment) the branch classtest of cosmicf
     cd ..
     git clone https://gitlab.com/matmartinelli/cosmicfish_reloaded.git
     cd cosmicfish_reloaded
-    git co classtest
+    git checkout classtest
 
 You can install the packages that are required using pip, or you can create a conda environment. For installing the packages use,
 
