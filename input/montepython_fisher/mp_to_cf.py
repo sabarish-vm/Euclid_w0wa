@@ -3,8 +3,7 @@ import os
 from glob import glob
 import argparse
 import yaml
-os.chdir(os.path.dirname(os.path.realpath(__file__)))
-
+FILEPATH = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
 
 # Function to extract data from the log.param file
 def paramdatafxn(outdir):
@@ -54,7 +53,7 @@ def MPparanamnamesfxn(outdir):
 
 def write_files(outdir, out_filename):
     paramdata, namelist = paramdatafxn(outdir)
-    with open('./mp_to_cf.yaml', 'r') as yamlfile:
+    with open(os.path.join(FILEPATH,'mp_to_cf.yaml'), 'r') as yamlfile:
         paramnames = yaml.load(yamlfile, Loader=yaml.FullLoader)
     newparamfile = os.path.join(outdir, out_filename)
     print('Reading log.param from the directory : ', outdir)
@@ -73,5 +72,6 @@ parser.add_argument(
     dest='outdir', help="Specify the path to the output directory of MP")
 args = parser.parse_args()
 mpoutdir = args.outdir
+
 
 write_files(outdir=mpoutdir, out_filename='fisher.paramnames')
