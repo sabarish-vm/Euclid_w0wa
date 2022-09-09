@@ -3,7 +3,7 @@ For this project, at the moment, you need to clone montepython from the private 
     cd ..
     git clone https://github.com/lesgourg/montepython montepython
     cd montepython
-    git co euclid_cl_xc
+    git checkout euclid_cl_xc
 
 To set up the path to class you need to do:
 
