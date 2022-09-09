@@ -54,7 +54,10 @@ def mainfxn(filepath):
         var += file
         if error_only:
             var += ' --error-only'
-        var += ' & '
+        else : pass
+        if file == glob(filepath)[-1] : pass
+        else :
+            var += ' & '
 
     print(var)
     choice = input('\n Do you want to execute the above command ? (y/n)')
