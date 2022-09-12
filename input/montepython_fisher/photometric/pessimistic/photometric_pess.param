@@ -1,6 +1,6 @@
 #------Experiments to test (separated with commas)-----
 
-data.experiments=['euclid_photometric']
+data.experiments=['euclid_photometric_z']
 
 #------ Parameter list -------
 
@@ -59,14 +59,14 @@ data.cosmo_arguments['nonlinear_min_k_max'] = 80.
 data.cosmo_arguments['halofit_min_k_nonlinear'] = 3.282e-3
 
 # HP settings
-data.cosmo_arguments['l_max_g'] = 20
-data.cosmo_arguments['l_max_pol_g'] = 15
-data.cosmo_arguments['radiation_streaming_approximation'] = 2
-data.cosmo_arguments['radiation_streaming_trigger_tau_over_tau_k'] = 240.
-data.cosmo_arguments['radiation_streaming_trigger_tau_c_over_tau'] = 100.
-data.cosmo_arguments['tol_ncdm_synchronous'] = 1.e-5
-data.cosmo_arguments['l_max_ncdm'] = 22
-data.cosmo_arguments['ncdm_fluid_trigger_tau_over_tau_k'] = 41.
+#data.cosmo_arguments['l_max_g'] = 20
+#data.cosmo_arguments['l_max_pol_g'] = 15
+#data.cosmo_arguments['radiation_streaming_approximation'] = 2
+#data.cosmo_arguments['radiation_streaming_trigger_tau_over_tau_k'] = 240.
+#data.cosmo_arguments['radiation_streaming_trigger_tau_c_over_tau'] = 100.
+#data.cosmo_arguments['tol_ncdm_synchronous'] = 1.e-5
+#data.cosmo_arguments['l_max_ncdm'] = 22
+#data.cosmo_arguments['ncdm_fluid_trigger_tau_over_tau_k'] = 41.
 
 #------ Mcmc parameters ----
 # Number of steps taken, by default (overwritten by the -N command)
