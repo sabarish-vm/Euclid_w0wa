@@ -15,7 +15,7 @@ derivatives:own
 feedback:1
 fishermatrix_file_extension:.txt
 nonlinear:True
-outroot:w0wa_external_class-Optimistic-own_HP
+outroot:w0wa_external_class-Optimistic-own_LP
 results_dir:../../results/cosmicfish_external/spectroscopic/optimistic/
 savgol_internalkmin:0.001
 savgol_internalsamples:800
@@ -42,10 +42,10 @@ Ps_2:0
 Ps_3:0
 Ps_4:0
 h:0.67
-lnbgs8_1:-0.32553167501488084
-lnbgs8_2:-0.31601343501121726
-lnbgs8_3:-0.3116391249561235
-lnbgs8_4:-0.32027521071286313
+lnbgs8_1:-0.32553169668704574
+lnbgs8_2:-0.3160134669627468
+lnbgs8_3:-0.31163916489595256
+lnbgs8_4:-0.32027526411373086
 ns:0.96
 sigma8:0.815584
 w0:-1.0
