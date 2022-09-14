@@ -146,11 +146,11 @@ data.cosmo_arguments['halofit_min_k_nonlinear'] = 3.282e-3
 #data.cosmo_arguments['background_evolver'] = 0
 #data.cosmo_arguments['tol_perturbations_integration'] = 1.e-6
 
-# tol HP (THP2) settings
+# tol HP (THP2) settings: gives bad results because background_evolver=rkck needs a proper optimisation never done yet
 #data.cosmo_arguments['background_evolver'] = 0
 #data.cosmo_arguments['tol_background_integration'] = 1.e-12
 
-# tol HP (THP3) settings
+# tol HP (THP3) settings: gives excellent results. No need to change tol of backgrouynd nor thermo, no need to use rkck
 data.cosmo_arguments['tol_perturbations_integration'] = 1.e-6
 
 #------ Mcmc parameters ----
