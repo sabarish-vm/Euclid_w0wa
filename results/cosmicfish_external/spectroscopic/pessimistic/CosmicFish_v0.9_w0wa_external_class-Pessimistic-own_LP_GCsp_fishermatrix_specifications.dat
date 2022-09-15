@@ -1,7 +1,9 @@
-**Git version commit: 0e981bf32b294a1aacf11b69628cf11e18080f02 
+**Git version commit: c3ec1172513d808e9ecb468f0951bd7481df9b01 
 **Observables: GCsp 
 ### CosmicFish settings ###
 AP_effect:True
+FoG_switch:True
+GCsp_linear:False
 accuracy:1
 activateMG:False
 bfs8terms:True
@@ -15,7 +17,7 @@ derivatives:own
 feedback:1
 fishermatrix_file_extension:.txt
 nonlinear:True
-outroot:w0wa_external_class-Pessimistic-own_HP
+outroot:w0wa_external_class-Pessimistic-own_LP
 results_dir:../../results/cosmicfish_external/spectroscopic/pessimistic/
 savgol_internalkmin:0.001
 savgol_internalsamples:800
@@ -42,10 +44,10 @@ Ps_2:0
 Ps_3:0
 Ps_4:0
 h:0.67
-lnbgs8_1:-0.32540115456785584
-lnbgs8_2:-0.31588291442010885
-lnbgs8_3:-0.31150860421161514
-lnbgs8_4:-0.32014469405377727
+lnbgs8_1:-0.3254012615415101
+lnbgs8_2:-0.315883031817211
+lnbgs8_3:-0.3115087297504168
+lnbgs8_4:-0.32014482896819524
 ns:0.96
 sigma8:0.815584
 w0:-1.0
