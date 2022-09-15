@@ -4,7 +4,7 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append('../../')
 from plot_master import *
 
-parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter) 
+parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument('--error-only',action='store_true',dest='error_only',
                     help='    Plot error comparions plots only',
                     default=False)
@@ -12,10 +12,10 @@ args = parser.parse_args()
 error_only = args.error_only
 
 fish_files =  [
-    '../../../results/cosmicfish_external/spectroscopic/optimistic/CosmicFish_v0.9_w0wa_external_class-Optimistic-own_HP_GCsp_fishermatrix.txt',
+    '../../../results/cosmicfish_external/spectroscopic/optimistic/CosmicFish_v0.9_w0wa_external_class-Optimistic-own_LP_GCsp_fishermatrix.txt',
     '../../../results/cosmicfish_internal/spectroscopic/optimistic/CosmicFish_v0.9_w0wa_internal_camb-Optimistic-own_GCsp_fishermatrix.txt'
               ]
-    
+
 labels=  [r'CF_ext_class GCsp opt',
           r'CF_int_camb GCsp opt']
 
