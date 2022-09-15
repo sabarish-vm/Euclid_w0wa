@@ -1,9 +1,8 @@
-#Paramnames file for CosmicFish, for a Fisher that was produced by MP
 w0    w_0    -1
-wa    w_a    0.0
+wa    w_a    0.
 Omegab    \Omega_{\mathrm{b}, 0}    0.05
 h    h    0.67
-ns    n_s    0.96
+ns    n_\mathrm{s}    0.96
 sigma8    \sigma_8    0.815584
 Omegam    \Omega_{\mathrm{m}, 0}    0.32
 Ps_1    Ps_1    0
