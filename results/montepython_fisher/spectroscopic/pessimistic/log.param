@@ -57,14 +57,14 @@ data.cosmo_arguments['k_per_decade_for_pk'] = 30.
 data.cosmo_arguments['non linear'] = 'none'
 
 # HP settings
-data.cosmo_arguments['l_max_g'] = 20
-data.cosmo_arguments['l_max_pol_g'] = 15
-data.cosmo_arguments['radiation_streaming_approximation'] = 2
-data.cosmo_arguments['radiation_streaming_trigger_tau_over_tau_k'] = 240.
-data.cosmo_arguments['radiation_streaming_trigger_tau_c_over_tau'] = 100.
-data.cosmo_arguments['tol_ncdm_synchronous'] = 1.e-5
-data.cosmo_arguments['l_max_ncdm'] = 22
-data.cosmo_arguments['ncdm_fluid_trigger_tau_over_tau_k'] = 41.
+# data.cosmo_arguments['l_max_g'] = 20
+# data.cosmo_arguments['l_max_pol_g'] = 15
+# data.cosmo_arguments['radiation_streaming_approximation'] = 2
+# data.cosmo_arguments['radiation_streaming_trigger_tau_over_tau_k'] = 240.
+# data.cosmo_arguments['radiation_streaming_trigger_tau_c_over_tau'] = 100.
+# data.cosmo_arguments['tol_ncdm_synchronous'] = 1.e-5
+# data.cosmo_arguments['l_max_ncdm'] = 22
+# data.cosmo_arguments['ncdm_fluid_trigger_tau_over_tau_k'] = 41.
 
 
 #------ Mcmc parameters ----
@@ -99,7 +99,7 @@ euclid_spectroscopic.scale_dependent_growth_factor_f = False
 
 
 #-----------Cosmological-arguments---------
-data.cosmo_arguments.update({'T_ncdm': 2.7255, 'N_ncdm': 1, 'YHe': 0.2454006, 'reio_parametrization': 'reio_none', 'Omega_Lambda': 0.0, 'k_per_decade_for_pk': 30.0, 'non linear': 'none', 'l_max_g': 20, 'l_max_pol_g': 15, 'radiation_streaming_approximation': 2, 'radiation_streaming_trigger_tau_over_tau_k': 240.0, 'radiation_streaming_trigger_tau_c_over_tau': 100.0, 'tol_ncdm_synchronous': 1e-05, 'l_max_ncdm': 22, 'ncdm_fluid_trigger_tau_over_tau_k': 41.0, 'output': ' mPk ', 'z_max_pk': 1.8, 'P_k_max_1/Mpc': 51})
+data.cosmo_arguments.update({'T_ncdm': 2.7255, 'N_ncdm': 1, 'YHe': 0.2454006, 'reio_parametrization': 'reio_none', 'Omega_Lambda': 0.0, 'k_per_decade_for_pk': 30.0, 'non linear': 'none', 'output': ' mPk ', 'z_max_pk': 1.8, 'P_k_max_1/Mpc': 51})
 
 
 #--------Default-Configuration------
