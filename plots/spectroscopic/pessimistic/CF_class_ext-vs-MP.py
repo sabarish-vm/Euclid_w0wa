@@ -3,7 +3,7 @@ import os, sys, argparse
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append('../../')
 
-parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter) 
+parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument('--error-only',action='store_true',dest='error_only',
                     help='    Plot error comparions plots only',
                     default=False)
@@ -13,8 +13,8 @@ error_only = args.error_only
 from plot_master import plotter
 
 fish_files =  [
-    '../../../results/cosmicfish_external/spectroscopic/pessimistic/CosmicFish_v0.9_w0wa_external_class-Pessimistic-own_HP_GCsp_fishermatrix.txt',
-    '../../../results/montepython_fisher/spectroscopic/pessimistic/fisher.mat'    
+    '../../../results/cosmicfish_external/spectroscopic/pessimistic/CosmicFish_v0.9_w0wa_external_class-Pessimistic-own_LP_GCsp_fishermatrix.txt',
+    '../../../results/montepython_fisher/spectroscopic/pessimistic/fisher.mat'
         ]
 
 labels=  [r'CF_ext_class GCsp pess',
