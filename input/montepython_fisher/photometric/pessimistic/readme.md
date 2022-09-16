@@ -1,6 +1,6 @@
 # before running, since this is the pessimistic case, go to the root montepython/ directory and edit:
 
-    montepython/likelihoods/euclid_photometric/euclid_photometric.data
+    montepython/likelihoods/euclid_photometric_z/euclid_photometric_z.data
 
 # and check that the pessimistic settings are on, that is:
 
