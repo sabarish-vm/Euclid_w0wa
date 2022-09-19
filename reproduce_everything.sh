@@ -18,10 +18,10 @@ cp montepython/likelihoods/euclid_photometric_z/euclid_photometric_z.data.pessim
 
 rm data/euclid_xc_fiducial.dat
 rm -rf ../Euclid_w0wa/results/montepython_fisher/photometric/pessimistic
-python3 montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/photometric/pessimistic/photometric_pess.param -o ../Euclid_w0wa/results/montepython_fisher/photometric/pessimistic -f 0
-python3 montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/photometric/pessimistic --fisher --fisher-step-it 1 --fisher-tol 10000
+$PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/photometric/pessimistic/photometric_pess.param -o ../Euclid_w0wa/results/montepython_fisher/photometric/pessimistic -f 0
+$PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/photometric/pessimistic --fisher --fisher-step-it 1 --fisher-tol 10000
 cd ../Euclid_w0wa
-python3 input/montepython_fisher/paramnames_for_cosmicfish.py results/montepython_fisher/photometric/pessimistic
+$PYTHON input/montepython_fisher/paramnames_for_cosmicfish.py results/montepython_fisher/photometric/pessimistic
 
 # TBD: run MCMC
 
