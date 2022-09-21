@@ -81,6 +81,7 @@ def plotter(fish_files, labels, pars, outpath='automatic',
         fgroup.add_fisher_matrix(ftemp)
 
 #     #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     COSMO + Nuisance      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     cutnames=pars
 
     fgroupRe = fgroup.reshuffle(params=cutnames, update_names=False)
@@ -108,6 +109,7 @@ def plotter(fish_files, labels, pars, outpath='automatic',
         fish_plotter.compare_errors(compare_errors_dict_opts)
         #fish_plotter.matrix_ratio()
 
+    return
 
 #     #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    COSMO marginalizing Nuisance   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     cutnames=pars
