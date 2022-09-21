@@ -1,55 +1,123 @@
 PYTHON=python3
 
+PROBE=photometric
+PROBE_SHORT=photo
+LKL=euclid_photometric_z
+#CASE=pessimistic
+#CASE_SHORT=pess
+CASE=optimistic
+CASE_SHORT=opt
+
 # placeholder for running optionally input_4_cast
 
-echo "Shall we rerun the photometric pessimsitic case ? (y/n)"
+echo "Shall we rerun the $PROBE $CASE case ? (y/n)"
 read answer
-if [ ! "$answer" = "y" ] ; then
+if [ "$answer" = "y" ] ; then
 
-# run CosmicFish
-$PYTHON input/cosmicfish/photometric/pessimistic/class_external.py
-$PYTHON input/cosmicfish/photometric/pessimistic/camb_external.py
-$PYTHON input/cosmicfish/photometric/pessimistic/class_internal.py
-$PYTHON input/cosmicfish/photometric/pessimistic/camb_internal.py
+    # run CosmicFish
 
-# run MP
-cd ../montepython
-cp montepython/likelihoods/euclid_photometric_z/euclid_photometric_z.data.pessimsitic montepython/likelihoods/euclid_photometric_z/euclid_photometric_z.data
+    echo "Shall we rerun CosmicFish CLASS external ? (y/n)"
+    read answer
+    if [ "$answer" = "y" ] ; then
+        $PYTHON input/cosmicfish/$PROBE/$CASE/class_external.py
+    fi
 
-rm data/euclid_xc_fiducial.dat
-rm -rf ../Euclid_w0wa/results/montepython_fisher/photometric/pessimistic
-$PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/photometric/pessimistic/photometric_pess.param -o ../Euclid_w0wa/results/montepython_fisher/photometric/pessimistic -f 0
-$PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/photometric/pessimistic --fisher --fisher-step-it 1 --fisher-tol 10000
-cd ../Euclid_w0wa
-$PYTHON input/montepython_fisher/paramnames_for_cosmicfish.py results/montepython_fisher/photometric/pessimistic
+    echo "Shall we rerun CosmicFish CAMB external ? (y/n)"
+    read answer
+    if [ "$answer" = "y" ] ; then
+        $PYTHON input/cosmicfish/$PROBE/$CASE/camb_external.py
+    fi
 
-# TBD: run MCMC
+    echo "Shall we rerun CosmicFish CLASS internal ? (y/n)"
+    read answer
+    if [ "$answer" = "y" ] ; then
+        $PYTHON input/cosmicfish/$PROBE/$CASE/class_internal.py
+    fi
 
-# plot error comparisons
-cd plots/photometric/pessimistic
-$PYTHON CF_camb_ext-vs-MP.py --error-only
-$PYTHON CF_camb_int-vs-MP.py --error-only
-$PYTHON CF_class_ext-vs-camb_ext.py --error-only
-$PYTHON CF_class_ext-vs-class_int.py --error-only
-$PYTHON CF_class_int-vs-camb_ext.py --error-only
-$PYTHON CF_camb_ext-vs-camb_int.py --error-only
-$PYTHON CF_class_ext-vs-MP.py --error-only
-$PYTHON CF_class_ext-vs-camb_int.py --error-only
-$PYTHON CF_class_int-vs-MP.py --error-only
-$PYTHON CF_class_int-vs-camb_int.py --error-only
-cd ../../..
+    echo "Shall we rerun CosmicFish CAMB internal ? (y/n)"
+    read answer
+    if [ "$answer" = "y" ] ; then
+        $PYTHON input/cosmicfish/$PROBE/$CASE/camb_internal.py
+    fi
 
-# run comparison table
-cd results/comparison_table
-$PYTHON table-to-pdf.py
-cd ../..
+    # run MP
 
-# run getdist
-cd getdist
-$PYTHON photo_pess.py
+    echo "Shall we rerun MontePython Fisher ? (y/n)"
+    read answer
+    if [ "$answer" = "y" ] ; then
+        cd ../montepython
+        cp montepython/likelihoods/$LKL/$LKL.data.pessimsitic montepython/likelihoods/$LKL/$LKL.data
+        rm data/euclid_xc_fiducial.dat
+        rm -rf ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE
+        $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/$PROBE_$CASE_SHORT.param -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE -f 0
+        $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE --fisher --fisher-step-it 1 --fisher-tol 10000
+        cd ../Euclid_w0wa
+        $PYTHON input/montepython_fisher/paramnames_for_cosmicfish.py results/montepython_fisher/$PROBE/$CASE
+    fi
+
+    # TBD: run MCMC
+    echo "Shall we rerun MontePython MCMC ? (y/n)"
+    read answer
+    if [ "$answer" = "y" ] ; then
+        echo "script not written yet"
+    fi
+
+    # plot error comparisons
+    cd plots/$PROBE/$CASE
+    #
+    $PYTHON CF_camb_ext-vs-MP.py --error-only
+    rm CF_camb_ext-vs-MP_cosmo_and_nuisance_error_comparison.pdf
+    rm CF_camb_ext-vs-MP_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    $PYTHON CF_camb_ext-vs-camb_int.py --error-only
+    # keep error comparison plot for the paper
+    rm CF_camb_ext-vs-camb_int_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    $PYTHON CF_camb_int-vs-MP.py --error-only
+    rm CF_camb_int-vs-MP_cosmo_and_nuisance_error_comparison.pdf
+    rm CF_camb_int-vs-MP_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    $PYTHON CF_class_ext-vs-MP.py --error-only
+    rm CF_class_ext-vs-MP_cosmo_and_nuisance_error_comparison.pdf
+    rm CF_class_ext-vs-MP_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    $PYTHON CF_class_ext-vs-camb_ext.py --error-only
+    rm CF_class_ext-vs-camb_ext_cosmo_and_nuisance_error_comparison.pdf
+    rm CF_class_ext-vs-camb_ext_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    $PYTHON CF_class_ext-vs-camb_int.py --error-only
+    rm CF_class_ext-vs-camb_int_cosmo_and_nuisance_error_comparison.pdf
+    rm CF_class_ext-vs-camb_int_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    $PYTHON CF_class_ext-vs-class_int.py --error-only
+    # keep error comparison plot for the paper
+    rm CF_class_ext-vs-class_int_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    $PYTHON CF_class_int-vs-MP.py --error-only
+    # keep error comparison plot for the paper
+    rm CF_class_int-vs-MP_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    $PYTHON CF_class_int-vs-camb_ext.py --error-only
+    rm CF_class_int-vs-camb_ext_cosmo_and_nuisance_error_comparison.pdf
+    rm CF_class_int-vs-camb_ext_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    $PYTHON CF_class_int-vs-camb_int.py --error-only
+    # keep error comparison plot for the paper
+    rm CF_class_int-vs-camb_int_cosmo_and_nuisance_matrix_ratio.pdf
+    #
+    cd ../../..
+
+    # run comparison table
+    cd results/comparison_table
+    $PYTHON table-to-pdf.py
+    cd ../..
+
+    # run getdist
+    #cd getdist
+    #$PYTHON $PROBE_SHORT_$CASE_SHORT.py
 
 fi
 
 # run absolute error script
-results/absolute_sigmas
-$PYTHON all_sigmas.py
+#cd results/absolute_sigmas
+#$PYTHON all_sigmas.py

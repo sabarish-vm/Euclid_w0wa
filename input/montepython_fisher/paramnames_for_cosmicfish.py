@@ -20,7 +20,9 @@ with open(logfile) as f:
 o = open(paramnamesfile,"w")
 
 for line in lines:
-    if "['Omega_b']" in line:
+    if "#" in line:
+        pass
+    elif "['Omega_b']" in line:
         fiducial = ((line.split("=")[1][2:-2]).split(",")[0]).strip()
         o.write(r'Omegab    \Omega_{\mathrm{b}, 0}    '+fiducial+'\n')
     elif "['h']" in line:

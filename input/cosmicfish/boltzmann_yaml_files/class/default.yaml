@@ -1,6 +1,7 @@
 ACCURACY:
   'k_per_decade_for_bao': 50
   'k_per_decade_for_pk': 50
+  'halofit_min_k_nonlinear': 3.282e-3
 COSMO_SETTINGS:
   'P_k_max_1/Mpc': 50
   'output' : 'mPk'
@@ -8,7 +9,7 @@ COSMO_SETTINGS:
   'z_max_pk' : 5.0
   'N_ncdm': 1
   'T_cmb' : 2.7255
-  'nonlinear_min_k_max' : 100.
+  'nonlinear_min_k_max' : 80.
   'k_pivot' : 0.05
 LCDM :
   'Omega_k' : 0

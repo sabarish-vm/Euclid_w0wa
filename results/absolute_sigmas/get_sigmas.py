@@ -1,7 +1,7 @@
 from glob import glob
 import os
 import numpy as np
-import pandas as pd 
+import pandas as pd
 import sys
 
 THIS_FILE = os.path.dirname(os.path.realpath(__file__))
@@ -22,7 +22,7 @@ labels_dict={
 'b1' : '$b_1$','b2' : '$b_2$', 'b3' : '$b_3$', 'b4' : '$b_4$', 'b5' : '$b_5$','b6' : '$b_6$','b7' : '$b_7$','b8' : '$b_8$','b9' : '$b_9$','b10' : '$b_{10}$',
 'AIA' : '$A_{\mathrm{IA}}$', 'etaIA' :'$\eta_\mathrm{IA}$', 'betaIA' : '$\beta_\mathrm{IA}$',
 'lnbgs8_1' : '$\ln(b_g \sigma_8)_1$', 'lnbgs8_2' : '$\ln(b_g \sigma_8)_2$', 'lnbgs8_3' : '$\ln(b_g \sigma_8)_3$', 'lnbgs8_4' : '$\ln(b_g \sigma_8)_4$',
-'Ps_1'  :  '$P_{S1}$', 'Ps_2'  :  '$P_{S2}$','Ps_3'  :  '$P_{S3}$','Ps_4'  :  '$P_{S4}$'   
+'Ps_1'  :  '$P_{S1}$', 'Ps_2'  :  '$P_{S2}$','Ps_3'  :  '$P_{S3}$','Ps_4'  :  '$P_{S4}$'
 }
 cosmo_pars = ['Omegab','h','ns','sigma8','Omegam','w0','wa']
 nuisance_wlxgcph = ['b1','b2','b3','b4','b5','b6','b7','b8','b9','b10','AIA','etaIA']
@@ -36,30 +36,30 @@ def hinfo_to_table(folder,kind='pandas',save=False,only_sigmas = False,only_cosm
     with open(file, 'r') as f :
         next(f)
         con = f.readlines()
-        
+
     temp = [(i.strip()) for i in con]
     temp = [(i.strip()).split(':') for i in con]
     temp = [i for i in temp if i != ['']]
     x = np.array([np.fromstring(i[1].strip(), dtype = float ,  sep='\t') for i in temp])
-    
+
     index = ['R-1','Best fit','mean','sigma','1-sigma-','1-sigma+ ','2-sigma-','2-sigma+','3-sigma-','3-sigma+','1-sigma >',
              '1-sigma <','2-sigma >','2-sigma <' ,'3-sigma >','3-sigma <','95% CL >','95% CL <']
-    
+
     #paramnames = np.genfromtxt(glob(os.path.join(folder,'*.paramnames'))[0],dtype=str,usecols=0)
     with open(glob(os.path.join(folder,'*.bestfit'))[0], 'r') as f :
-        paramnames = [names_mptocf[i.strip()] for i in f.readline().split('#')[1].strip().split(',')]   
+        paramnames = [names_mptocf[i.strip()] for i in f.readline().split('#')[1].strip().split(',')]
 
-        
+
     data=pd.DataFrame(data=x,index=index,columns=paramnames)
     data=data.transpose()
     if only_cosmo :
         data = data.loc[cosmo_pars]
-    
+
     if save :
         data.to_csv(runname + 'h_info')
-            
-    if kind == 'pandas' :              
-        if only_sigmas :       
+
+    if kind == 'pandas' :
+        if only_sigmas :
             return pd.DataFrame(data['sigma']).rename(columns={'sigma':'MontePython MCMC'})
     elif kind == 'numpy' :
         return x.T
@@ -77,7 +77,7 @@ def create_tables(paths_dict,names_dict,probe,only_cosmo = True) :
         pars = cosmo_pars+eval('nuisance_'+'gcsp')
     if not only_cosmo:
         df = pd.DataFrame(index=pars)
-    else : 
+    else :
         df = pd.DataFrame(index=cosmo_pars)
     for i,j in zip(paths_dict['fisher'],names_dict['fisher']) :
         cf1=fisher_to_table(i,pars=pars,name=j)
@@ -86,7 +86,8 @@ def create_tables(paths_dict,names_dict,probe,only_cosmo = True) :
         mp=hinfo_to_table(i,only_sigmas=True)
         df = df.join(mp)
     df = df.rename(index=labels_dict)
-    df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(np.format_float_positional)(x,precision=3,unique=True,min_digits=2,trim='-'))).astype(str),axis=0)
+    #df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(np.format_float_positional)(x,precision=3,unique=True,min_digits=2,trim='-'))).astype(str),axis=0)
+    df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(np.format_float_positional)(x,precision=5,unique=True,trim='-'))).astype(str),axis=0)
     return df
 
 def save_table(df,filename):
