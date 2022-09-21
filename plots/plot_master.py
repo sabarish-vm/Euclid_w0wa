@@ -41,7 +41,8 @@ def fisher_path(dict) :
         return os.path.realpath(path)
 
 
-def plotter(fish_files,labels,pars,outpath='automatic',script_name='automatic',error_only=False):
+def plotter(fish_files, labels, pars, outpath='automatic',
+            script_name='automatic', error_only=False, compare_errors_dict=dict()):
 
     fish_files = [os.path.abspath(i) for i in fish_files] ## This is evaluated at old CWD
     os.chdir(os.path.dirname(os.path.realpath(__file__))) ## CWD changes
@@ -50,9 +51,10 @@ def plotter(fish_files,labels,pars,outpath='automatic',script_name='automatic',e
     from cosmicfishpie.analysis import fisher_plotting as cfp
     from cosmicfishpie.analysis import fisher_matrix as cfm
     print('\n\n')
-    print('Fishers are located at\n')
-    print(fish_files[0],'\n')
-    print(fish_files[1],'\n')
+    print('----> Fishers are located at ----> \n')
+    for fi in fish_files:
+        print(fi,'\n')
+    #print(fish_files[1],'\n')
     if outpath == 'automatic' :
         outpath = inspect.stack()[1][1]
         outpath = Path(outpath).parent
@@ -78,117 +80,108 @@ def plotter(fish_files,labels,pars,outpath='automatic',script_name='automatic',e
         print(ftemp.name)
         fgroup.add_fisher_matrix(ftemp)
 
-    #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     COSMO + Nuisance      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#     #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     COSMO + Nuisance      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    cutnames=pars
 
-    if True:
-
-        cutnames=pars
-
-        fgroupRe = fgroup.reshuffle(params=cutnames, update_names=False)
+    fgroupRe = fgroup.reshuffle(params=cutnames, update_names=False)
 
 
-        pessions = {'fishers_group': fgroupRe,
-                    'colors': snscolors,
-                    'dpi':100,
-                    'fish_labels': labels,
-                    'plot_pars': pars,
-                    'plot_method': 'Gaussian',
-                    'axis_custom_factors' : {'all':4},
-                    'outpath': outpath,
-                    'outroot': script_name + '_' + 'cosmo_and_nuisance',
-                    'param_labels' : pars
-                    }
-
-        fish_plotter = cfp.fisher_plotting(**pessions)
-        if error_only :
-                fish_plotter.compare_errors({'save_error':True})
-                fish_plotter.load_gaussians()
-                fish_plotter.matrix_ratio()
-        else :
-                fish_plotter.load_gaussians()
-                fish_plotter.plot_fisher(filled=True)
-                fish_plotter.compare_errors({'save_error':True})
-                fish_plotter.matrix_ratio()
-
-
-    #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    COSMO marginalizing Nuisance   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    if False:
-
-        cutnames=pars
-
-        fgroupRe = fgroup.reshuffle(params=cutnames, update_names=False)
-
-        pessions = {'fishers_group': fgroupRe,
-                    'colors': snscolors,
-                    'dpi':100,
-                    'fish_labels': labels,
-                    'plot_pars': cosmo_names,
-                    'plot_method': 'Gaussian',
-                    'axis_custom_factors' : {'all':4},
-                    'outpath': outpath,
-                    'outroot': script_name + '_' + 'cosmo_marg_nuisance'
-                    }
-
-        fish_plotter = cfp.fisher_plotting(**pessions)
-        if error_only :
-                fish_plotter.compare_errors({'save_error':True})
-        else :
-                fish_plotter.load_gaussians()
-                fish_plotter.plot_fisher(filled=True)
-                fish_plotter.compare_errors({'save_error':True})
-
-    #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    COSMO fixing Nuisance   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    if False:
-
-        cutnames=cosmo_names
-
-        fgroupRe = fgroup.reshuffle(params=cutnames, update_names=False)
+    pessions = {'fishers_group': fgroupRe,
+            'colors': snscolors,
+            'dpi':100,
+            'fish_labels': labels,
+            'plot_pars': pars,
+            'plot_method': 'Gaussian',
+            'axis_custom_factors' : {'all':4},
+            'outpath': outpath,
+            'outroot': script_name + '_' + 'cosmo_and_nuisance',
+            'param_labels' : pars
+            }
+    compare_errors_dict_opts = {'save_error':True}
+    compare_errors_dict_opts.update(compare_errors_dict)
+    fish_plotter = cfp.fisher_plotting(**pessions)
+    if error_only :
+        fish_plotter.compare_errors(compare_errors_dict_opts)
+    else :
+        fish_plotter.load_gaussians()
+        fish_plotter.plot_fisher(filled=True)
+        fish_plotter.compare_errors(compare_errors_dict_opts)
+        #fish_plotter.matrix_ratio()
 
 
-        pessions = {'fishers_group': fgroupRe,
-                    'colors': snscolors,
-                    'dpi':100,
-                    'fish_labels': labels,
-                    'plot_pars': cosmo_names,
-                    'plot_method': 'Gaussian',
-                    'axis_custom_factors' : {'all':4},
-                    'outpath': outpath,
-                    'outroot': script_name+ '_' + 'cosmo_fix_nuisance'
-                    }
+#     #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    COSMO marginalizing Nuisance   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    cutnames=pars
 
-        fish_plotter = cfp.fisher_plotting(**pessions)
-        if error_only :
-                fish_plotter.compare_errors({'save_error':True})
-        else :
-                fish_plotter.load_gaussians()
-                fish_plotter.plot_fisher(filled=True)
-                fish_plotter.compare_errors({'save_error':True})
+    fgroupRe = fgroup.reshuffle(params=cutnames, update_names=False)
+
+
+    pessions = {'fishers_group': fgroupRe,
+            'colors': snscolors,
+            'dpi':100,
+            'fish_labels': labels,
+            'plot_pars': cosmo_names,
+            'plot_method': 'Gaussian',
+            'axis_custom_factors' : {'all':4},
+            'outpath': outpath,
+            'outroot': script_name + '_' + 'cosmo_marg_nuisance'
+            }
+
+    fish_plotter = cfp.fisher_plotting(**pessions)
+    if error_only :
+        fish_plotter.compare_errors(compare_errors_dict_opts)
+    else :
+        fish_plotter.load_gaussians()
+        fish_plotter.plot_fisher(filled=True)
+        fish_plotter.compare_errors(compare_errors_dict_opts)
+
+
+
+#     #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    COSMO fixing Nuisance   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    cutnames=cosmo_names
+
+    fgroupRe = fgroup.reshuffle(params=cutnames, update_names=False)
+
+
+    pessions = {'fishers_group': fgroupRe,
+            'colors': snscolors,
+            'dpi':100,
+            'fish_labels': labels,
+            'plot_pars': cosmo_names,
+            'plot_method': 'Gaussian',
+            'axis_custom_factors' : {'all':4},
+            'outpath': outpath,
+            'outroot': script_name+ '_' + 'cosmo_fix_nuisance'
+            }
+
+    fish_plotter = cfp.fisher_plotting(**pessions)
+    if error_only :
+        fish_plotter.compare_errors(compare_errors_dict_opts)
+    else :
+        fish_plotter.load_gaussians()
+        fish_plotter.plot_fisher(filled=True)
+        fish_plotter.compare_errors(compare_errors_dict_opts)
 
     #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     Nuisance fixing cosmo     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    cutnames=nuisance_names
 
-    if False:
+    fgroupRe = fgroup.reshuffle(params=cutnames, update_names=False)
 
-        cutnames=nuisance_names
 
-        fgroupRe = fgroup.reshuffle(params=cutnames, update_names=False)
+    pessions = {'fishers_group': fgroupRe,
+            'colors': snscolors,
+            'dpi':100,
+            'fish_labels': labels,
+            'plot_pars': nuisance_names,
+            'plot_method': 'Gaussian',
+            'axis_custom_factors' : {'all':4},
+            'outpath': outpath,
+            'outroot':script_name+ '_' +'nuisance_fix_cosmo'
+            }
 
-        pessions = {'fishers_group': fgroupRe,
-                    'colors': snscolors,
-                    'dpi':100,
-                    'fish_labels': labels,
-                    'plot_pars': nuisance_names,
-                    'plot_method': 'Gaussian',
-                    'axis_custom_factors' : {'all':4},
-                    'outpath': outpath,
-                    'outroot':script_name+ '_' +'nuisance_fix_cosmo'
-                    }
-
-        fish_plotter = cfp.fisher_plotting(**pessions)
-        if error_only :
-                fish_plotter.compare_errors({'save_error':True})
-        else :
-                fish_plotter.load_gaussians()
-                fish_plotter.plot_fisher(filled=True)
-                fish_plotter.compare_errors({'save_error':True})
+    fish_plotter = cfp.fisher_plotting(**pessions)
+    if error_only :
+        fish_plotter.compare_errors(compare_errors_dict_opts)
+    else :
+        fish_plotter.load_gaussians()
+        fish_plotter.plot_fisher(filled=True)
+        fish_plotter.compare_errors(compare_errors_dict_opts)
