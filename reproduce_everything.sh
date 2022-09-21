@@ -112,6 +112,9 @@ if [ "$answer" = "y" ] ; then
     $PYTHON table-to-pdf.py
     cd ../..
 
+    # run comparison plot between various pipelines
+    $PYTHON 4codes-CF_class_camb-vs-ISTF-vs-MP.py --error-only
+
     # run getdist
     #cd getdist
     #$PYTHON $PROBE_SHORT_$CASE_SHORT.py
