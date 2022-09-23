@@ -46,7 +46,7 @@ if [ "$answer" = "y" ] ; then
     read answer
     if [ "$answer" = "y" ] ; then
         cd ../montepython
-        cp montepython/likelihoods/$LKL/$LKL.data.pessimsitic montepython/likelihoods/$LKL/$LKL.data
+        cp montepython/likelihoods/$LKL/$LKL.data.pessimistic montepython/likelihoods/$LKL/$LKL.data
         rm data/euclid_xc_fiducial.dat
         rm -rf ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE
         $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/$PROBE_$CASE_SHORT.param -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE -f 0
@@ -117,7 +117,7 @@ if [ "$answer" = "y" ] ; then
 
     # run getdist
     cd getdist
-    $PYTHON $PROBE_SHORT_$CASE_SHORT.py
+    $PYTHON ($PROBE_SHORT)_$CASE_SHORT.py
     cd ..
 
     # run absolute error script
