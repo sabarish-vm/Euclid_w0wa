@@ -17,11 +17,11 @@ LKL=euclid_spectroscopic
 
 # Select here the case (pessimistic/optimistic)
 #
-#CASE=pessimistic
-#CASE_SHORT=pess
+CASE=pessimistic
+CASE_SHORT=pess
 #
-CASE=optimistic
-CASE_SHORT=opt
+#CASE=optimistic
+#CASE_SHORT=opt
 
 # placeholder for running optionally input_4_cast
 
