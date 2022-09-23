@@ -6,18 +6,22 @@ PYTHON=python3
 # python3 external_fisher/replace_paramnames.py
 
 # Select here the probe (photometric/spectroscopic)
-PROBE=photometric
-PROBE_SHORT=photo
-LKL=euclid_photometric_z
-#PROBE=spectroscopic
-#PROBE_SHORT=spec
-#LKL=euclid_spectroscopic
+#
+#PROBE=photometric
+#PROBE_SHORT=photo
+#LKL=euclid_photometric_z
+#
+PROBE=spectroscopic
+PROBE_SHORT=spec
+LKL=euclid_spectroscopic
 
 # Select here the case (pessimistic/optimistic)
-CASE=pessimistic
-CASE_SHORT=pess
-#CASE=optimistic
-#CASE_SHORT=opt
+#
+#CASE=pessimistic
+#CASE_SHORT=pess
+#
+CASE=optimistic
+CASE_SHORT=opt
 
 # placeholder for running optionally input_4_cast
 
@@ -57,8 +61,13 @@ if [ "$answer" = "y" ] ; then
     read answer
     if [ "$answer" = "y" ] ; then
         cd ../montepython
-        cp montepython/likelihoods/$LKL/$LKL.data.pessimistic montepython/likelihoods/$LKL/$LKL.data
-        rm data/euclid_xc_fiducial.dat
+        cp montepython/likelihoods/$LKL/$LKL.data.$CASE montepython/likelihoods/$LKL/$LKL.data
+        if [ "$PROBE" = "photometric" ] ; then
+            rm data/euclid_xc_fiducial.dat
+        fi
+        if [ "$PROBE" = "spectroscopic" ] ; then
+            rm data/euclid_pk_fiducial.dat
+        fi
         rm -rf ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE
         $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/($PROBE)_$CASE_SHORT.param -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE -f 0
         $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE --fisher --fisher-step-it 1 --fisher-tol 10000
