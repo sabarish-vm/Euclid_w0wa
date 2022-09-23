@@ -2,12 +2,12 @@
 #
 # This file contains the parameter names for a derived Fisher matrix.
 #
-h    h    0.670000
 Omegam    \Omega_{{\rm m}, 0}    0.320000
-w0    w_0    -1.000000
 Omegab    \Omega_{{\rm b}, 0}    0.050000
-wa    w_a    0.000000
 sigma8    \sigma_8    0.815584
+w0    w_0    -1.000000
+wa    w_a    0.000000
+h    h    0.670000
 ns    n_{\rm s}    0.960000
 lnbgs8_1    \ln(b_g \sigma_8)_1    -0.325399
 lnbgs8_2    \ln(b_g \sigma_8)_2    -0.315880

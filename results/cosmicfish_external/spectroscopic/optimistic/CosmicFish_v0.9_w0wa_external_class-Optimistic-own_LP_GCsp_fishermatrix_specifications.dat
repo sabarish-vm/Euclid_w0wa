@@ -1,7 +1,9 @@
-**Git version commit: f6bdac074ba73a4f057fb40af92e2c1547062a4a 
+**Git version commit: b57f370bbac14d0f598f743d8fc040af9017c8ef 
 **Observables: GCsp 
 ### CosmicFish settings ###
 AP_effect:True
+FoG_switch:True
+GCsp_linear:False
 accuracy:1
 activateMG:False
 bfs8terms:True
@@ -42,10 +44,10 @@ Ps_2:0
 Ps_3:0
 Ps_4:0
 h:0.67
-lnbgs8_1:-0.32553169668704574
-lnbgs8_2:-0.3160134669627468
-lnbgs8_3:-0.31163916489595256
-lnbgs8_4:-0.32027526411373086
+lnbgs8_1:-0.3254012615415101
+lnbgs8_2:-0.315883031817211
+lnbgs8_3:-0.3115087297504168
+lnbgs8_4:-0.32014482896819524
 ns:0.96
 sigma8:0.815584
 w0:-1.0
