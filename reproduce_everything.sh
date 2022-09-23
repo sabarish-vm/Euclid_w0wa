@@ -105,22 +105,24 @@ if [ "$answer" = "y" ] ; then
     # keep error comparison plot for the paper
     rm CF_class_int-vs-camb_int_cosmo_and_nuisance_matrix_ratio.pdf
     #
+    # run comparison plot between various pipelines
+    $PYTHON 4codes-CF_class_camb-vs-ISTF-vs-MP.py --error-only
+    #
     cd ../../..
 
     # run comparison table
     cd results/comparison_table
-    $PYTHON table-to-pdf.py
+    $PYTHON table-$PROBE_SHORT-$CASE_SHORT.py
     cd ../..
 
-    # run comparison plot between various pipelines
-    $PYTHON 4codes-CF_class_camb-vs-ISTF-vs-MP.py --error-only
-
     # run getdist
-    #cd getdist
-    #$PYTHON $PROBE_SHORT_$CASE_SHORT.py
+    cd getdist
+    $PYTHON $PROBE_SHORT_$CASE_SHORT.py
+    cd ..
+
+    # run absolute error script
+    cd results/absolute_sigmas
+    $PYTHON $PROBE_SHORT-$CASE_SHORT-sigmas.py
+    cd ../..
 
 fi
-
-# run absolute error script
-#cd results/absolute_sigmas
-#$PYTHON all_sigmas.py
