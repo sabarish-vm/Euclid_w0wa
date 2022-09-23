@@ -17,6 +17,7 @@ for f in glob.glob("*.paramnames"):
         newText = inputfile.read()
         for po, pn in zip(pars_old, pars_new):
     	    newText = newText.replace(po, pn)
+        newText = newText.replace('betAIA','betaIA') # this lines is used when the script is run more than once, to avoid bIA -> betaIA -> betAIA
         newText = newText.replace('b10    b10   1.743', 'b10    b10    1.743')
     print(newText)
     with open(f, "w") as outputfile:
