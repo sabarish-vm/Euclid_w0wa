@@ -16,12 +16,12 @@ fish_files =  [
     '../../../results/cosmicfish_internal/spectroscopic/pessimistic/CosmicFish_v0.9_w0wa_internal_camb-Pessimistic-own_GCsp_fishermatrix.txt',
     '../../../results/montepython_fisher/spectroscopic/pessimistic/fisher.mat'
      ,
-      '../../../external_fishers/soapfish/km025/SOAPFish_C2-NL2-km025-w0wa-flat-full-1p0E-02-last.dat'
+      '../../../external_fishers/soapfish/km025/SOAPFish_C2-NL2-km025-w0wa_cdm-1p0E-02.dat'
               ]
     
 labels=  [
-         r'CF_int_class',
-         r'CF_int_camb',
+         r'CF class INT',
+         r'CF camb INT',
           r'MP'
           ,
           r'SOAPFish'
