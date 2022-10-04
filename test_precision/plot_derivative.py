@@ -113,7 +113,7 @@ for i, param in enumerate(params):
         axs[i,1].loglog(kk[:],-dn[0,:],'r--',linewidth=0.9)
 
     if i==0:
-        axs[i,1].legend(loc='lower left')
+        axs[i,0].legend()
 
 #plt.show()
 plt.savefig('derivatives.pdf')
