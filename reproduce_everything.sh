@@ -17,11 +17,15 @@ LKL=euclid_spectroscopic
 
 # Select here the case (pessimistic/optimistic)
 #
-CASE=pessimistic
-CASE_SHORT=pess
+#CASE=pessimistic
+#CASE_SHORT=pess
 #
-#CASE=optimistic
-#CASE_SHORT=opt
+CASE=optimistic
+CASE_SHORT=opt
+
+# Select here the precision
+CLASS_PREC=HP
+CAMB_PREC=P3
 
 # placeholder for running optionally input_4_cast
 
@@ -34,13 +38,13 @@ if [ "$answer" = "y" ] ; then
     echo "Shall we rerun CosmicFish CLASS external ? (y/n)"
     read answer
     if [ "$answer" = "y" ] ; then
-        $PYTHON input/cosmicfish/$PROBE/$CASE/class_external.py
+        $PYTHON input/cosmicfish/$PROBE/$CASE/class_external_${CLASS_PREC}.py
     fi
 
     echo "Shall we rerun CosmicFish CAMB external ? (y/n)"
     read answer
     if [ "$answer" = "y" ] ; then
-        $PYTHON input/cosmicfish/$PROBE/$CASE/camb_external.py
+        $PYTHON input/cosmicfish/$PROBE/$CASE/camb_external_${CAMB_PREC}.py
     fi
 
     echo "Shall we rerun CosmicFish CLASS internal ? (y/n)"
@@ -68,18 +72,31 @@ if [ "$answer" = "y" ] ; then
         if [ "$PROBE" = "spectroscopic" ] ; then
             rm data/euclid_pk_fiducial.dat
         fi
-        rm -rf ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE
-        $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/($PROBE)_$CASE_SHORT.param -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE -f 0
-        $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE --fisher --fisher-step-it 1 --fisher-tol 10000
+        rm -rf ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE_${CLASS_PREC}
+        $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_${CASE_SHORT}_${CLASS_PREC}.param -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE_${CLASS_PREC} -f 0
+        $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/$CASE_${CLASS_PREC} --fisher --fisher-step-it 1 --fisher-tol 10000
         cd ../Euclid_w0wa
-        $PYTHON input/montepython_fisher/paramnames_for_cosmicfish.py results/montepython_fisher/$PROBE/$CASE
+        $PYTHON input/montepython_fisher/paramnames_for_cosmicfish.py results/montepython_fisher/$PROBE/$CASE_${CLASS_PREC}
     fi
 
     # TBD: run MCMC
-    echo "Shall we rerun MontePython MCMC ? (y/n)"
+    echo "Shall we rerun MontePython MCMC? (y/n)"
     read answer
     if [ "$answer" = "y" ] ; then
-        echo "script not written yet"
+
+        echo "Shall we erase previous output directory with the chains? [WARNING: make a backup before saying yes] (y/n)"
+        read answer
+        if [ "$answer" = "y" ] ; then
+            rm -r ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}
+            cd ../montepython
+            cp montepython/likelihoods/$LKL/$LKL.data.$CASE montepython/likelihoods/$LKL/$LKL.data
+            rm data/euclid_xc_fiducial.dat
+            $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_$CASE_SHORT.param -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT} -f 0
+            $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT} -N 100000 --update 50 --superupdate 20 --covmat .... --conf default.conf
+            cd ../Euclid_w0wa
+        else
+            echo('Will not erase old directory and will not rerun. Make a back up of the old chains and rerun the script.')
+        fi
     fi
 
     echo "Shall we recompute error ratios and redo error plots ? (y/n)"
@@ -152,7 +169,7 @@ if [ "$answer" = "y" ] ; then
 
         # run getdist
         cd getdist
-        $PYTHON ($PROBE_SHORT)_$CASE_SHORT.py
+        $PYTHON ${PROBE_SHORT}_$CASE_SHORT.py
         cd ..
     fi
 

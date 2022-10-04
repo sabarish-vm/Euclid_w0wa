@@ -75,6 +75,8 @@ def create_tables(paths_dict,names_dict,probe,only_cosmo = True) :
         pars = cosmo_pars+eval('nuisance_'+'wlxgcph')
     if probe.lower() == 'gcsp' :
         pars = cosmo_pars+eval('nuisance_'+'gcsp')
+    if probe.lower() == 'combined' :
+        pars = cosmo_pars+eval('nuisance_'+'wlxgcph')+eval('nuisance_'+'gcsp')
     if not only_cosmo:
         df = pd.DataFrame(index=pars)
     else :
@@ -82,9 +84,12 @@ def create_tables(paths_dict,names_dict,probe,only_cosmo = True) :
     for i,j in zip(paths_dict['fisher'],names_dict['fisher']) :
         cf1=fisher_to_table(i,pars=pars,name=j)
         df = df.join(cf1)
-    for i in paths_dict['mcmc'] :
-        mp=hinfo_to_table(i,only_sigmas=True)
-        df = df.join(mp)
+    try:
+        for i in paths_dict['mcmc'] :
+            mp=hinfo_to_table(i,only_sigmas=True)
+            df = df.join(mp)
+    except:
+        pass
     df = df.rename(index=labels_dict)
     try:
         df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(np.format_float_positional)(x,precision=3,unique=True,min_digits=2,trim='-'))).astype(str),axis=0)

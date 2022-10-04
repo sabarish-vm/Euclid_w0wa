@@ -13,8 +13,8 @@ args = parser.parse_args()
 error_only = args.error_only
 
 fish_files =  [
-    '../../../results/cosmicfish_external/spectroscopic/optimistic/CosmicFish_v0.9_w0wa_external_class-Optimistic-own_LP_GCsp_fishermatrix.txt',
-    '../../../results/montepython_fisher/spectroscopic/optimistic/fisher.mat'
+    '../../../results/cosmicfish_external/spectroscopic/optimistic/CosmicFish_v0.9_w0wa_external_class-Optimistic-own_HP_GCsp_fishermatrix.txt',
+    '../../../results/montepython_fisher/spectroscopic/optimistic_HP/fisher.mat'
               ]
 
 labels=  [r'CF_ext_class GCsp opt',

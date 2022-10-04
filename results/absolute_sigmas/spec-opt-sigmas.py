@@ -10,7 +10,7 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 ## save_table : converts the dataframe into latex table
 
 ################################################# Spec Opt #################################################
-paths = {'mcmc' : ['../../results/montepython_mcmc/w0wa_spec_opt'], 'fisher' : ['../../external_fishers/soapfish/km030/SOAPFish_C2-NL2-km030-w0wa-flat-full-1p0E-02-last.dat','../../results/cosmicfish_internal/spectroscopic/optimistic/CosmicFish_v0.9_w0wa_internal_class-Optimistic-own_GCsp_fishermatrix.txt','../../results/montepython_fisher/spectroscopic/optimistic/fisher.mat']}
+paths = {'mcmc' : ['../../results/montepython_mcmc/w0wa_spec_opt'], 'fisher' : ['../../external_fishers/soapfish/km030/SOAPFish_C2-NL2-km030-w0wa-flat-full-1p0E-02-last.dat','../../results/cosmicfish_internal/spectroscopic/optimistic/CosmicFish_v0.9_w0wa_internal_class-Optimistic-own_GCsp_fishermatrix.txt','../../results/montepython_fisher/spectroscopic/optimistic_HP/fisher.mat']}
 
 names = {'fisher' : ['SoapFish','CosmicFish','MontePython Fisher']}
 
