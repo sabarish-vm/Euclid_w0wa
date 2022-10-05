@@ -15,7 +15,7 @@ from plot_master import plotter
 fish_files =  [
     '../../../results/cosmicfish_internal/photometric/optimistic/CosmicFish_v0.9_w0wa_internal_class-Optimistic-3PT_WLGCph_fishermatrix.txt',
     '../../../results/cosmicfish_internal/photometric/optimistic/CosmicFish_v0.9_w0wa_internal_camb-Optimistic-3PT_WLGCph_fishermatrix.txt',
-    '../../../results/montepython_fisher/photometric/optimistic/fisher.mat',
+    '../../../results/montepython_fisher/photometric/optimistic_HP/fisher.mat',
     '../../../../fisher_for_public/All_Results/optimistic/flat/EuclidISTF_GCph_WL_XC_w0wa_flat_optimistic.txt'
               ]
 

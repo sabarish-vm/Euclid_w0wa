@@ -14,7 +14,7 @@ from plot_master import plotter
 
 fish_files =  [
     '../../../results/cosmicfish_internal/photometric/pessimistic/CosmicFish_v0.9_w0wa_internal_class-Pessimistic-3PT_WLGCph_fishermatrix.txt',
-    '../../../results/montepython_fisher/photometric/pessimistic/fisher.mat'
+    '../../../results/montepython_fisher/photometric/pessimistic_HP/fisher.mat'
               ]
 
 labels = [r'CF_int_class XCph pess',

@@ -1,9 +1,9 @@
 from getdist.gaussian_mixtures import GaussianND
 from getdist import plots
 from getdist_plot import *
-import os 
+import os
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
-### MCMC 
+### MCMC
 # When providing the paths as a list remember to remove the extensions, and the number specifying the chain
 ## E.g.
 # Suppose the first chain has the filename 2022-08-30_100000__1.txt, then only 2022-08-30_100000_ must be provided
@@ -16,7 +16,7 @@ mcmc1 = mcmc(pathlist=pathlist)
 cf1 = Fisher('../results/cosmicfish_internal/photometric/optimistic/CosmicFish_v0.9_w0wa_internal_class-Optimistic-3PT_WLGCph_fishermatrix.txt')
 
 # Fisher MP
-mp1 = Fisher('../results/montepython_fisher/photometric/optimistic/fisher.mat')
+mp1 = Fisher('../results/montepython_fisher/photometric/optimistic_HP/fisher.mat')
 
 ## Load Gaussians distributions correponding to the Fishers
 gauss=GaussianND(mean=mp1.fiducials, cov=mp1.fishermatrix ,names=mp1.paramnames,labels=mp1.labels,is_inv_cov=True)
@@ -36,9 +36,9 @@ g.export('./WLxGCPh_Opt_nuisance.pdf')
 print('Nuisance triangle finished')
 del g
 
-## Cosmo-Nuisance Rectangle 
+## Cosmo-Nuisance Rectangle
 g = plots.get_subplot_plotter(settings=plot_settings)
 g.rectangle_plot(cf1.cosmonames,cf1.nuisancenames,roots=[mcmc1.samples,gauss,gauss2],filled=[True,False,False],legend_labels=['MCMC','MP-Fisher','CF-Fisher'],contour_lws=[1,2,2])
 g.export('./WLxGCPh_Opt_cross.pdf')
 print('Cross-terms rectangle finished')
-del g 
+del g

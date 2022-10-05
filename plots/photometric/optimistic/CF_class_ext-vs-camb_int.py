@@ -13,7 +13,7 @@ error_only = args.error_only
 from plot_master import plotter
 
 fish_files =  [
-    '../../../results/cosmicfish_external/photometric/optimistic/CosmicFish_v0.9_w0wa_external_class-Optimistic-3PT_LP_WLGCph_fishermatrix.txt',
+    '../../../results/cosmicfish_external/photometric/optimistic/CosmicFish_v0.9_w0wa_external_class-Optimistic-3PT_HP_WLGCph_fishermatrix.txt',
     '../../../results/cosmicfish_internal/photometric/optimistic/CosmicFish_v0.9_w0wa_internal_camb-Optimistic-3PT_WLGCph_fishermatrix.txt'
               ]
 
