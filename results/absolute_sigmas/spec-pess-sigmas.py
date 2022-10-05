@@ -11,7 +11,7 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 
 ################################################# Spec Pess ###############################################
-paths = {'mcmc' : ['../../results/montepython_mcmc/w0wa_spec_opt'], 'fisher' : ['../../external_fishers/soapfish/km025/SOAPFish_C2-NL2-km025-w0wa-flat-full-1p0E-02-last.dat','../../results/cosmicfish_internal/spectroscopic/pessimistic/CosmicFish_v0.9_w0wa_internal_class-Pessimistic-own_GCsp_fishermatrix.txt','../../results/montepython_fisher/spectroscopic/pessimistic/fisher.mat']}
+paths = {'mcmc' : ['../../results/montepython_mcmc/w0wa_spec_opt'], 'fisher' : ['../../external_fishers/soapfish/km025/SOAPFish_C2-NL2-km025-w0wa_cdm-1p0E-02.dat','../../results/cosmicfish_internal/spectroscopic/pessimistic/CosmicFish_v0.9_w0wa_internal_class-Pessimistic-own_GCsp_fishermatrix.txt','../../results/montepython_fisher/spectroscopic/pessimistic_HP/fisher.mat']}
 
 names = {'fisher' : ['SoapFish','CosmicFish','MontePython Fisher']}
 

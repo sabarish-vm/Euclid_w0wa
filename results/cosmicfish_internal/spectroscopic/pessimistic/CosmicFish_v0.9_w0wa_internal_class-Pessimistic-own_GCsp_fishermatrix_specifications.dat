@@ -1,4 +1,4 @@
-**Git version commit: 9ae56c231baebee0315904977bf9e9e84f237498 
+**Git version commit: 683b7abee5126af40beb3c79437489282659e138 
 **Observables: GCsp 
 ### CosmicFish settings ###
 AP_effect:True
@@ -9,7 +9,7 @@ activateMG:False
 bfs8terms:True
 boltzmann_yaml_path:/Users/lesgourg/sciebo/documents/codes/ClassProject/Euclid_WP3/cosmicfish_reloaded/cosmicfishpie/fishermatrix/../../boltzmann_yaml_files
 camb_config_yaml:./boltzmann_yaml_files/camb/default.yaml
-camb_path:/usr/local/lib/python3.9/site-packages/camb
+camb_path:/Users/lesgourg/Library/Python/3.10/lib/python/site-packages/camb-1.3.4-py3.10.egg/camb
 class_config_yaml:./boltzmann_yaml_files/class/default.yaml
 code:class
 cosmo_model:w0waCDM
@@ -44,10 +44,10 @@ Ps_2:0
 Ps_3:0
 Ps_4:0
 h:0.67
-lnbgs8_1:-0.3253990164451978
-lnbgs8_2:-0.31588016901745014
-lnbgs8_3:-0.31150522034450534
-lnbgs8_4:-0.3201403649303832
+lnbgs8_1:-0.3253990730117779
+lnbgs8_2:-0.31588024148827354
+lnbgs8_3:-0.3115053031329945
+lnbgs8_4:-0.32014045772263316
 ns:0.96
 sigma8:0.815584
 w0:-1.0

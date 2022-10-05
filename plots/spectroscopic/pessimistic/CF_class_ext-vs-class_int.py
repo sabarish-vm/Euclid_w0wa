@@ -13,7 +13,7 @@ error_only = args.error_only
 from plot_master import plotter
 
 fish_files =  [
-    '../../../results/cosmicfish_external/spectroscopic/pessimistic/CosmicFish_v0.9_w0wa_external_class-Pessimistic-own_LP_GCsp_fishermatrix.txt',
+    '../../../results/cosmicfish_external/spectroscopic/pessimistic/CosmicFish_v0.9_w0wa_external_class-Pessimistic-own_HP_GCsp_fishermatrix.txt',
     '../../../results/cosmicfish_internal/spectroscopic/pessimistic/CosmicFish_v0.9_w0wa_internal_class-Pessimistic-own_GCsp_fishermatrix.txt'          ]
 
 labels=  [r'CF_ext_class GCsp pess',
