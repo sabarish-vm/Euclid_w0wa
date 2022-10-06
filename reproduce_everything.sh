@@ -2,8 +2,9 @@ PYTHON=python3
 
 # NOTE: the IST:Fisher matrix located in the ../fisher_for_public directory
 # can only be handled after a renaming of the parameters, performed by running
-# once the script:
-# python3 external_fisher/replace_paramnames.py
+# once the commands:
+# python external_fishers/replace_paramnames.py ../fisher_for_public/All_Results/pessimistic/flat/
+# python external_fishers/replace_paramnames.py ../fisher_for_public/All_Results/optimistic/flat/
 
 # Select here the probe (photometric/spectroscopic)
 #
@@ -17,11 +18,11 @@ LKL=euclid_photometric_z
 
 # Select here the case (pessimistic/optimistic)
 #
-CASE=pessimistic
-CASE_SHORT=pess
+#CASE=pessimistic
+#CASE_SHORT=pess
 #
-#CASE=optimistic
-#CASE_SHORT=opt
+CASE=optimistic
+CASE_SHORT=opt
 
 # Select here the precision
 CLASS_PREC=HP
@@ -95,7 +96,7 @@ if [ "$answer" = "y" ] ; then
             $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT} -N 100000 --update 50 --superupdate 20 --covmat .... --conf default.conf
             cd ../Euclid_w0wa
         else
-            echo('Will not erase old directory and will not rerun. Make a back up of the old chains and rerun the script.')
+            echo "Will not erase old directory and will not rerun. Make a back up of the old chains and rerun the script."
         fi
     fi
 
@@ -105,52 +106,47 @@ if [ "$answer" = "y" ] ; then
     if [ "$answer" = "y" ] ; then
 
         # plot error comparisons
-        cd plots/$PROBE/$CASE
+        cd plots
         #
-        $PYTHON CF_camb_ext-vs-MP.py --error-only
-        rm CF_camb_ext-vs-MP_cosmo_and_nuisance_error_comparison.pdf
-        rm CF_camb_ext-vs-MP_cosmo_and_nuisance_matrix_ratio.pdf
+        # uncomment if you prefer old files to be removed rather than overwritten
+        #rm $PROBE/$CASE/*.txt
+        #rm $PROBE/$CASE*/.pdf
         #
-        $PYTHON CF_camb_ext-vs-camb_int.py --error-only
+        $PYTHON $PROBE/$CASE/CF_camb_ext-vs-MP.py --error-only
+        rm $PROBE/$CASE/CF_camb_ext-vs-MP_cosmo_and_nuisance_error_comparison.pdf
+        #
+        $PYTHON $PROBE/$CASE/CF_camb_ext-vs-camb_int.py --error-only
         # keep error comparison plot for the paper
-        rm CF_camb_ext-vs-camb_int_cosmo_and_nuisance_matrix_ratio.pdf
         #
-        $PYTHON CF_camb_int-vs-MP.py --error-only
-        rm CF_camb_int-vs-MP_cosmo_and_nuisance_error_comparison.pdf
-        rm CF_camb_int-vs-MP_cosmo_and_nuisance_matrix_ratio.pdf
+        $PYTHON $PROBE/$CASE/CF_camb_int-vs-MP.py --error-only
+        rm $PROBE/$CASE/CF_camb_int-vs-MP_cosmo_and_nuisance_error_comparison.pdf
         #
-        $PYTHON CF_class_ext-vs-MP.py --error-only
-        rm CF_class_ext-vs-MP_cosmo_and_nuisance_error_comparison.pdf
-        rm CF_class_ext-vs-MP_cosmo_and_nuisance_matrix_ratio.pdf
+        $PYTHON $PROBE/$CASE/CF_class_ext-vs-MP.py --error-only
+        rm $PROBE/$CASE/CF_class_ext-vs-MP_cosmo_and_nuisance_error_comparison.pdf
         #
-        $PYTHON CF_class_ext-vs-camb_ext.py --error-only
-        rm CF_class_ext-vs-camb_ext_cosmo_and_nuisance_error_comparison.pdf
-        rm CF_class_ext-vs-camb_ext_cosmo_and_nuisance_matrix_ratio.pdf
+        $PYTHON $PROBE/$CASE/CF_class_ext-vs-camb_ext.py --error-only
+        rm $PROBE/$CASE/CF_class_ext-vs-camb_ext_cosmo_and_nuisance_error_comparison.pdf
         #
-        $PYTHON CF_class_ext-vs-camb_int.py --error-only
-        rm CF_class_ext-vs-camb_int_cosmo_and_nuisance_error_comparison.pdf
-        rm CF_class_ext-vs-camb_int_cosmo_and_nuisance_matrix_ratio.pdf
+        $PYTHON $PROBE/$CASE/CF_class_ext-vs-camb_int.py --error-only
+        rm $PROBE/$CASE/CF_class_ext-vs-camb_int_cosmo_and_nuisance_error_comparison.pdf
         #
-        $PYTHON CF_class_ext-vs-class_int.py --error-only
+        $PYTHON $PROBE/$CASE/CF_class_ext-vs-class_int.py --error-only
         # keep error comparison plot for the paper
-        rm CF_class_ext-vs-class_int_cosmo_and_nuisance_matrix_ratio.pdf
         #
-        $PYTHON CF_class_int-vs-MP.py --error-only
+        $PYTHON $PROBE/$CASE/CF_class_int-vs-MP.py --error-only
         # keep error comparison plot for the paper
-        rm CF_class_int-vs-MP_cosmo_and_nuisance_matrix_ratio.pdf
         #
-        $PYTHON CF_class_int-vs-camb_ext.py --error-only
-        rm CF_class_int-vs-camb_ext_cosmo_and_nuisance_error_comparison.pdf
-        rm CF_class_int-vs-camb_ext_cosmo_and_nuisance_matrix_ratio.pdf
+        $PYTHON $PROBE/$CASE/CF_class_int-vs-camb_ext.py --error-only
+        rm $PROBE/$CASE/CF_class_int-vs-camb_ext_cosmo_and_nuisance_error_comparison.pdf
         #
-        $PYTHON CF_class_int-vs-camb_int.py --error-only
+        $PYTHON $PROBE/$CASE/CF_class_int-vs-camb_int.py --error-only
         # keep error comparison plot for the paper
-        rm CF_class_int-vs-camb_int_cosmo_and_nuisance_matrix_ratio.pdf
         #
         # run comparison plot between various pipelines
-        $PYTHON 4codes-CF_class_camb-vs-ISTF-vs-MP.py --error-only
+        $PYTHON $PROBE/$CASE/4codes-CF_class_camb-vs-ISTF-vs-MP.py --error-only
+        # keep error comparison plot for the paper
         #
-        cd ../../..
+        cd ..
     fi
 
     echo "Shall we replot main the comparison table ? (y/n)"
