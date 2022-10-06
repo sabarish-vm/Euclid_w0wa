@@ -1,4 +1,4 @@
-**Git version commit: 5470f786e0dca41a6baca0fd0015341fdd31adcf 
+**Git version commit: 057901c322113bba7e0d8ee9c7d06aba044b5cbb 
 **Observables: WLGCph 
 ### CosmicFish settings ###
 AP_effect:True
@@ -7,9 +7,9 @@ GCsp_linear:False
 accuracy:1
 activateMG:False
 bfs8terms:True
-boltzmann_yaml_path:/Users/lesgourg/sciebo/documents/codes/ClassProject/Euclid_WP3/cosmicfish_reloaded/cosmicfishpie/fishermatrix/../../boltzmann_yaml_files
+boltzmann_yaml_path:/home/lesgourg/Euclid_WP3/cosmicfish_reloaded/cosmicfishpie/fishermatrix/../../boltzmann_yaml_files
 camb_config_yaml:./boltzmann_yaml_files/camb/default.yaml
-camb_path:/usr/local/lib/python3.9/site-packages/camb
+camb_path:/home/lesgourg/.local/lib/python3.6/site-packages/camb
 class_config_yaml:./boltzmann_yaml_files/class/default.yaml
 code:class
 cosmo_model:w0waCDM
