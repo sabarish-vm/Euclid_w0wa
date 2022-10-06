@@ -15,7 +15,7 @@ photo_pess_files = glob('../../plots/photometric/pessimistic/*error*.txt')
 probes = {'spec_opt':spec_opt_files,  'photo_opt':photo_opt_files, 'spec_pess' : spec_pess_files, 'photo_pess' : photo_pess_files }
 
 p = 'spec_opt'
-df1=pd.DataFrame(index=codes,columns=codes)
+df1=pd.DataFrame(index=codes,columns=codes,dtype='float')
 df1=df1.fillna(0)
 write_data(df1,'cosmo_and_nuisance',probes[p])
 save_table(df1,filename=p,save=True)
