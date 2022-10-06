@@ -92,7 +92,7 @@ def create_tables(paths_dict,names_dict,probe,only_cosmo = True) :
         pass
     df = df.rename(index=labels_dict)
     try:
-        df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(np.format_float_positional)(x,precision=3,unique=True,min_digits=2,trim='-'))).astype(str),axis=0)
+        df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(np.format_float_positional)(x,precision=3,unique=True,min_digits=4,trim='-'))).astype(str),axis=0)
     except:
         df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(np.format_float_positional)(x,precision=5,unique=True,trim='-'))).astype(str),axis=0)
     return df
