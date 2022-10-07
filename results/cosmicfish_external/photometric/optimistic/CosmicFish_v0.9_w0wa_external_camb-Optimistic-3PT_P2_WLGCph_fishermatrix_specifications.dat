@@ -17,7 +17,7 @@ derivatives:3PT
 feedback:1
 fishermatrix_file_extension:.txt
 nonlinear:True
-outroot:w0wa_external_camb-Optimistic-3PT_P3
+outroot:w0wa_external_camb-Optimistic-3PT_P2
 results_dir:../../results/cosmicfish_external/photometric/optimistic/
 savgol_internalkmin:0.001
 savgol_internalsamples:800

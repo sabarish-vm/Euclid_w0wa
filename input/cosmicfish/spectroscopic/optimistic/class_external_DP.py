@@ -10,7 +10,7 @@ from cosmicfish_external_master import external_runs
 obs_opts = ['GCsp']                 # ['GCsp'], ['WLxGCph'],['WL'],['GCph']
 codes_list = ['class']                 # ['class'], ['camb']
 specifications = ['Optimistic']        # ['Pessimistic-ql', 'Pessimistic', 'Optimistic']
-precisions = ['LP']
+precisions = ['DP']
 
 # Path to the external files for class or camb
 # {codename} placeholder will be filled with either class or camb,
