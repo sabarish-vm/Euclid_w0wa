@@ -38,7 +38,7 @@ labels_dict={
 'b1' : 'b_1','b2' : 'b_2', 'b3' : 'b_3', 'b4' : 'b_4', 'b5' : 'b_5','b6' : 'b_6','b7' : 'b_7','b8' : 'b_8','b9' : 'b_9','b10' : 'b_{10}',
 'AIA' : 'A_{\mathrm{IA}}', 'etaIA' :'\eta_\mathrm{IA}', 'betaIA' : '\beta_\mathrm{IA}',
 'lnbgs8_1' : '\ln(b_g \sigma_8)_1', 'lnbgs8_2' : '\ln(b_g \sigma_8)_2', 'lnbgs8_3' : '\ln(b_g \sigma_8)_3', 'lnbgs8_4' : '\ln(b_g \sigma_8)_4',
-'Ps_1'  :  'P_{S1}', 'Ps_2'  :  'P_{S2}','Ps_3'  :  'P_{S3}','Ps_4'  :  'P_{S4}'   
+'Ps_1'  :  'P_{S1}', 'Ps_2'  :  'P_{S2}','Ps_3'  :  'P_{S3}','Ps_4'  :  'P_{S4}'
 }
 
 mp_labels_dict={'wa_fld':'w_a', 'w0_fld':'w_0','Omega_b':'\Omega_\mathrm{b}', 'h':'h','n_s':'n_s','sigma8':'\sigma_8','Omega_m_camb' : '\Omega_\mathrm{m}',
@@ -57,6 +57,8 @@ class Fisher:
             self.nuisancenames = nuisance_gcsp.copy()
         elif 'photometric' in self.path :
             self.nuisancenames = nuisance_wlxgcph.copy()
+        elif 'combined' in self.path :
+            self.nuisancenames = nuisance_wlxgcph.copy() + nuisance_gcsp.copy()
         cf1 = cfm.fisher_matrix(file_name = self.path)
         cf1 = cfo.reshuffle(cf1,cosmo_pars+self.nuisancenames)
         self.fiducials = cf1.get_param_fiducial().copy()
@@ -66,14 +68,14 @@ class Fisher:
         self.cosmonames = cosmo_pars.copy()
 
 
-        
+
 ############################## MCMC chains loading class ############################
 
 class mcmc():
     def __init__(self,pathlist,probe=None):
         self.pathlist = pathlist
         self.samples = self.loadChains()
-        
+
     def loadChainsParamnames(self,path):
         path = path + '.paramnames'
         params = np.genfromtxt(path,dtype=str,usecols=0)
