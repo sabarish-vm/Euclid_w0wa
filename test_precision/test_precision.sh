@@ -144,11 +144,11 @@ read answer
 if [ "$answer" = "y" ] ; then
 
     cd ../../montepython
-    rm -r ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_DP
+    rm -r ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_DP
     cp montepython/likelihoods/$LKL/$LKL.data.$CASE montepython/likelihoods/$LKL/$LKL.data
     rm data/euclid_xc_fiducial.dat
-    $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_${CASE_SHORT}_DP.param -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_DP -f 0
-    $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_DP --fisher --fisher-step-it 1 --fisher-tol 10000
+    $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_${CASE_SHORT}_DP.param -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_DP -f 0
+    $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_DP --fisher --fisher-step-it 1 --fisher-tol 10000
     cd ../Euclid_w0wa/test_precision
 
 fi
@@ -159,11 +159,11 @@ read answer
 if [ "$answer" = "y" ] ; then
 
     cd ../../montepython
-    rm -r ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_HP
+    rm -r ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_HP
     cp montepython/likelihoods/$LKL/$LKL.data.$CASE montepython/likelihoods/$LKL/$LKL.data
     rm data/euclid_xc_fiducial.dat
-    $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_${CASE_SHORT}_HP.param -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_DP -f 0
-    $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_HP --fisher --fisher-step-it 1 --fisher-tol 10000
+    $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_${CASE_SHORT}_HP.param -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_HP -f 0
+    $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_HP --fisher --fisher-step-it 1 --fisher-tol 10000
     cd ../Euclid_w0wa/test_precision
 
 fi
@@ -258,11 +258,11 @@ read answer
 if [ "$answer" = "y" ] ; then
 
     cd ../../montepython
-    rm -r ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_DP
+    rm -r ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_DP
     cp montepython/likelihoods/$LKL/$LKL.data.$CASE montepython/likelihoods/$LKL/$LKL.data
     rm data/euclid_xc_fiducial.dat
-    $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_${CASE_SHORT}_DP.param -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_DP -f 0
-    $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_DP --fisher --fisher-step-it 1 --fisher-tol 10000
+    $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_${CASE_SHORT}_DP.param -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_DP -f 0
+    $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_DP --fisher --fisher-step-it 1 --fisher-tol 10000
     cd ../Euclid_w0wa/test_precision
 
 fi
@@ -273,11 +273,11 @@ read answer
 if [ "$answer" = "y" ] ; then
 
     cd ../../montepython
-    rm -r ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_HP
+    rm -r ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_HP
     cp montepython/likelihoods/$LKL/$LKL.data.$CASE montepython/likelihoods/$LKL/$LKL.data
     rm data/euclid_xc_fiducial.dat
-    $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_${CASE_SHORT}_HP.param -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_DP -f 0
-    $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_mcmc/w0wa_${PROBE_SHORT}_${CASE_SHORT}_HP --fisher --fisher-step-it 1 --fisher-tol 10000
+    $PYTHON montepython/MontePython.py run -p ../Euclid_w0wa/input/montepython_fisher/$PROBE/$CASE/${PROBE}_${CASE_SHORT}_HP.param -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_HP -f 0
+    $PYTHON montepython/MontePython.py run -o ../Euclid_w0wa/results/montepython_fisher/$PROBE/${CASE}_HP --fisher --fisher-step-it 1 --fisher-tol 10000
     cd ../Euclid_w0wa/test_precision
 
 fi
