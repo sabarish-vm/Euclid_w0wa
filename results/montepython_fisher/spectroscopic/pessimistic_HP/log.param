@@ -125,24 +125,46 @@ data.experiments=['euclid_spectroscopic']
 ####### 0.07*sigma from MCMC #######
 
 # Cosmological parameter list
-data.parameters['w0_fld']          = [-1,      -1,    1,    0.00674429,   1, 'cosmo']
-data.parameters['wa_fld']          = [0.,      -1.  , 1,    0.0228536,   1, 'cosmo']
-data.parameters['Omega_b']         = [0.05,    0.005, 1,    0.000143129, 1, 'cosmo']
-data.parameters['h']               = [0.67,    0.1,   1.5,  0.000238168, 1, 'cosmo']
-data.parameters['n_s']             = [0.96,    0.8,   1.2,  0.00101003,  1, 'cosmo']
-data.parameters['sigma8']          = [0.815584,0.7,   0.9,  0.00086905,  1, 'cosmo']
+#data.parameters['w0_fld']          = [-1,      -1,    1,    0.00674429,   1, 'cosmo']
+#data.parameters['wa_fld']          = [0.,      -1.  , 1,    0.0228536,   1, 'cosmo']
+#data.parameters['Omega_b']         = [0.05,    0.005, 1,    0.000143129, 1, 'cosmo']
+#data.parameters['h']               = [0.67,    0.1,   1.5,  0.000238168, 1, 'cosmo']
+#data.parameters['n_s']             = [0.96,    0.8,   1.2,  0.00101003,  1, 'cosmo']
+#data.parameters['sigma8']          = [0.815584,0.7,   0.9,  0.00086905,  1, 'cosmo']
+#data.parameters['N_eff_camb']      = [3.046,   0.,    6,    0.0,    1, 'cosmo']
+#data.parameters['m_nu_camb']       = [0.06,    0.,    1,    0.0,    1, 'cosmo']
+#data.parameters['Omega_m_camb']    = [0.32,    0.005, 1,    0.00073962,  1, 'cosmo']
+
+#data.parameters['P_shot0']  = [0,  None, None,   2.43432,  1,  'nuisance']
+#data.parameters['P_shot1']  = [0,  None, None,   2.37468,  1,  'nuisance']
+#data.parameters['P_shot2']  = [0,  None, None,   2.50222,  1,  'nuisance']
+#data.parameters['P_shot3']  = [0,  None, None,   2.54548,  1,  'nuisance']
+#data.parameters['lnbsigma8_0']  = [-0.3255807310587479,  None, None,  0.00098196,  1,  'nuisance']
+#data.parameters['lnbsigma8_1']  = [-0.3160462157381254,  None, None,  0.0009597,  1,  'nuisance']
+#data.parameters['lnbsigma8_2']  = [-0.3116576878035215,  None, None,  0.00095018,  1,  'nuisance']
+#data.parameters['lnbsigma8_3']  = [-0.320278300814655,  None, None,   0.00093989,  1,  'nuisance']
+
+####### 0.06*sigma from MCMC #######
+
+# Cosmological parameter list
+data.parameters['w0_fld']          = [-1,      -1,    1,    0.00578082,   1, 'cosmo']
+data.parameters['wa_fld']          = [0.,      -1.  , 1,    0.0195888,   1, 'cosmo']
+data.parameters['Omega_b']         = [0.05,    0.005, 1,    0.0001165479, 1, 'cosmo']
+data.parameters['h']               = [0.67,    0.1,   1.5,  0.000204144, 1, 'cosmo']
+data.parameters['n_s']             = [0.96,    0.8,   1.2,  0.00086574,  1, 'cosmo']
+data.parameters['sigma8']          = [0.815584,0.7,   0.9,  0.0007449,  1, 'cosmo']
 data.parameters['N_eff_camb']      = [3.046,   0.,    6,    0.0,    1, 'cosmo']
 data.parameters['m_nu_camb']       = [0.06,    0.,    1,    0.0,    1, 'cosmo']
-data.parameters['Omega_m_camb']    = [0.32,    0.005, 1,    0.00073962,  1, 'cosmo']
+data.parameters['Omega_m_camb']    = [0.32,    0.005, 1,    0.00063396,  1, 'cosmo']
 
-data.parameters['P_shot0']  = [0,  None, None,   2.43432,  1,  'nuisance']
-data.parameters['P_shot1']  = [0,  None, None,   2.37468,  1,  'nuisance']
-data.parameters['P_shot2']  = [0,  None, None,   2.50222,  1,  'nuisance']
-data.parameters['P_shot3']  = [0,  None, None,   2.54548,  1,  'nuisance']
-data.parameters['lnbsigma8_0']  = [-0.3255807310587479,  None, None,  0.00098196,  1,  'nuisance']
-data.parameters['lnbsigma8_1']  = [-0.3160462157381254,  None, None,  0.0009597,  1,  'nuisance']
-data.parameters['lnbsigma8_2']  = [-0.3116576878035215,  None, None,  0.00095018,  1,  'nuisance']
-data.parameters['lnbsigma8_3']  = [-0.320278300814655,  None, None,   0.00093989,  1,  'nuisance']
+data.parameters['P_shot0']  = [0,  None, None,   2.08656,  1,  'nuisance']
+data.parameters['P_shot1']  = [0,  None, None,   2.03544,  1,  'nuisance']
+data.parameters['P_shot2']  = [0,  None, None,   2.14476,  1,  'nuisance']
+data.parameters['P_shot3']  = [0,  None, None,   2.18184,  1,  'nuisance']
+data.parameters['lnbsigma8_0']  = [-0.3255807310587479,  None, None,  0.00084168,  1,  'nuisance']
+data.parameters['lnbsigma8_1']  = [-0.3160462157381254,  None, None,  0.0008226,  1,  'nuisance']
+data.parameters['lnbsigma8_2']  = [-0.3116576878035215,  None, None,  0.00081444,  1,  'nuisance']
+data.parameters['lnbsigma8_3']  = [-0.320278300814655,  None, None,   0.00080562,  1,  'nuisance']
 
 ###########################
 
