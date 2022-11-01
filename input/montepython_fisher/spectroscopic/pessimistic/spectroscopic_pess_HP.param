@@ -164,7 +164,7 @@ data.experiments=['euclid_spectroscopic']
 #data.parameters['lnbsigma8_2']  = [-0.3116576878035215,  None, None,  0.00081444,  1,  'nuisance']
 #data.parameters['lnbsigma8_3']  = [-0.320278300814655,  None, None,   0.00080562,  1,  'nuisance']
 
-####### 0.05*sigma from MCMC #######
+####### 0.05*sigma from MCMC optimal choice #######
 
 # Cosmological parameter list
 data.parameters['w0_fld']          = [-1,      -1,    1,    0.00481735,   1, 'cosmo']
@@ -186,7 +186,7 @@ data.parameters['lnbsigma8_1']  = [-0.3160462157381254,  None, None,  0.0006855,
 data.parameters['lnbsigma8_2']  = [-0.3116576878035215,  None, None,  0.0006787,  1,  'nuisance']
 data.parameters['lnbsigma8_3']  = [-0.320278300814655,  None, None,   0.00067135,  1,  'nuisance']
 
-####### 0.04*sigma from MCMC #######
+####### 0.04*sigma from MCMC : gets worse #######
 
 # Cosmological parameter list
 #data.parameters['w0_fld']          = [-1,      -1,    1,    0.00385388,   1, 'cosmo']
@@ -207,6 +207,28 @@ data.parameters['lnbsigma8_3']  = [-0.320278300814655,  None, None,   0.00067135
 #data.parameters['lnbsigma8_1']  = [-0.3160462157381254,  None, None,  0.0005484,  1,  'nuisance']
 #data.parameters['lnbsigma8_2']  = [-0.3116576878035215,  None, None,  0.00054296,  1,  'nuisance']
 #data.parameters['lnbsigma8_3']  = [-0.320278300814655,  None, None,   0.00053708,  1,  'nuisance']
+
+####### 0.03*sigma from MCMC #######
+
+# Cosmological parameter list
+#data.parameters['w0_fld']          = [-1,      -1,    1,    0.000289041,   1, 'cosmo']
+#data.parameters['wa_fld']          = [0.,      -1.  , 1,    0.00097944,   1, 'cosmo']
+#data.parameters['Omega_b']         = [0.05,    0.005, 1,    6.1341e-06, 1, 'cosmo']
+#data.parameters['h']               = [0.67,    0.1,   1.5,  1.02072e-05, 1, 'cosmo']
+#data.parameters['n_s']             = [0.96,    0.8,   1.2,  4.3287e-05,  1, 'cosmo']
+#data.parameters['sigma8']          = [0.815584,0.7,   0.9,  3.7245e-05,  1, 'cosmo']
+#data.parameters['N_eff_camb']      = [3.046,   0.,    6,    0.0,    1, 'cosmo']
+#data.parameters['m_nu_camb']       = [0.06,    0.,    1,    0.0,    1, 'cosmo']
+#data.parameters['Omega_m_camb']    = [0.32,    0.005, 1,    3.1698e-05,  1, 'cosmo']
+
+#data.parameters['P_shot0']  = [0,  None, None,   0.104328,  1,  'nuisance']
+#data.parameters['P_shot1']  = [0,  None, None,   0.101772,  1,  'nuisance']
+#data.parameters['P_shot2']  = [0,  None, None,   0.107238,  1,  'nuisance']
+#data.parameters['P_shot3']  = [0,  None, None,   0.109092,  1,  'nuisance']
+#data.parameters['lnbsigma8_0']  = [-0.3255807310587479,  None, None,  4.2084e-05,  1,  'nuisance']
+#data.parameters['lnbsigma8_1']  = [-0.3160462157381254,  None, None,  4.113e-05,  1,  'nuisance']
+#data.parameters['lnbsigma8_2']  = [-0.3116576878035215,  None, None,  4.0722e-05,  1,  'nuisance']
+#data.parameters['lnbsigma8_3']  = [-0.320278300814655,  None, None,   4.0281e-05,  1,  'nuisance']
 
 ###########################
 
