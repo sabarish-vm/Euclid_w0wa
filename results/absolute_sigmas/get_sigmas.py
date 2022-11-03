@@ -70,6 +70,10 @@ def fisher_to_table(file_path,pars,name='CosmicFish') :
     cf_m = cfo.marginalise(cf1,cosmo_pars)
     return pd.DataFrame(data=cf_m.get_confidence_bounds(),index=cosmo_pars,columns=[name])
 
+def two_digits(x):
+    order = np.floor(np.log10(x))
+    return np.around(np.rint(x*pow(10.,-order+1))*pow(10.,order-1),decimals=int(-order+1))
+
 def create_tables(paths_dict,names_dict,probe,only_cosmo = True) :
     if probe.lower() == 'wlxgcph' :
         pars = cosmo_pars+eval('nuisance_'+'wlxgcph')
@@ -94,7 +98,10 @@ def create_tables(paths_dict,names_dict,probe,only_cosmo = True) :
     try:
         df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(np.format_float_positional)(x,precision=3,unique=True,min_digits=4,trim='-'))).astype(str),axis=0)
     except:
-        df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(np.format_float_positional)(x,precision=5,unique=True,trim='-'))).astype(str),axis=0)
+        print ('option min_digits not known')
+        print (df)
+        df = df.apply(lambda x : (np.vectorize(float)(np.vectorize(two_digits)(x))).astype(str),axis=0)
+        print (df)
     return df
 
 def save_table(df,filename):
