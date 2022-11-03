@@ -1,4 +1,4 @@
-**Git version commit: 5168df9b3864cad3c160b34bec5462e018551ca0 
+**Git version commit: 4f9f7e7cf9122888235324e0d525b3467ff309bc 
 **Observables: GCsp 
 ### CosmicFish settings ###
 AP_effect:True
@@ -44,10 +44,10 @@ Ps_2:0
 Ps_3:0
 Ps_4:0
 h:0.67
-lnbgs8_1:-0.3254202344189678
-lnbgs8_2:-0.3159068941593976
-lnbgs8_3:-0.3115368839126413
-lnbgs8_4:-0.3201779980566872
+lnbgs8_1:-0.3254685034124921
+lnbgs8_2:-0.3159550846271272
+lnbgs8_3:-0.3115851435439302
+lnbgs8_4:-0.32022623323337024
 ns:0.96
 sigma8:0.815584
 w0:-1.0
