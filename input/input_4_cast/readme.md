@@ -7,8 +7,7 @@ Go to the input_4_cast directory to run the code, and check that you have correc
 
 * For producing the CLASS external files, you will use the input files
 
-        ../Euclid_w0wa/input/input_4_cast/class_w0wa_LP.ini
-        ../Euclid_w0wa/input/input_4_cast/class_w0wa_MP.ini
+        ../Euclid_w0wa/input/input_4_cast/class_w0wa_DP.ini
         ../Euclid_w0wa/input/input_4_cast/class_w0wa_HP.ini
 
     (for respectively low precision, medium precision, high precision).
@@ -16,15 +15,15 @@ Go to the input_4_cast directory to run the code, and check that you have correc
 
     Then run with e.g.
 
-        python3 run.py ../Euclid_w0wa/input/input_4_cast/class_w0wa_LP.ini
+        python3 run.py ../Euclid_w0wa/input/input_4_cast/class_w0wa_HP.ini
 
 ----------------------------
 
 * For producing the CAMB external files, you will use the input file
 
-        ../Euclid_w0wa/input/input_4_cast/camb_w0wa_LP.ini
-        ../Euclid_w0wa/input/input_4_cast/camb_w0wa_MP.ini
-        ../Euclid_w0wa/input/input_4_cast/camb_w0wa_HP.ini
+        ../Euclid_w0wa/input/input_4_cast/camb_w0wa_P1.ini
+        ../Euclid_w0wa/input/input_4_cast/camb_w0wa_P2.ini
+        ../Euclid_w0wa/input/input_4_cast/camb_w0wa_P3.ini
 
     (for respectively low precision, medium precision, high precision).
     The relative paths at the beginning may need some editing if, on your machine, class is not located in the directory ../CAMB/
@@ -33,13 +32,13 @@ Go to the input_4_cast directory to run the code, and check that you have correc
 
     Then run with e.g.
 
-        python3 run.py ../Euclid_w0wa/input/input_4_cast/camb_w0wa_HP.ini
+        python3 run.py ../Euclid_w0wa/input/input_4_cast/camb_w0wa_P2.ini
 
 -----------------------------
 
 * For comparing CLASS and CAMB files, run e.g.
 
-    python3 compare.py --save_plots --threshold 0.01 output/camb_w0wa_HP output/class_w0wa_HP
+    python3 compare.py --save_plots --threshold 0.01 output/camb_w0wa_P3 output/class_w0wa_HP
 
     All spectra should agree very well (typically better than 0.1% for
     the linear spectrum with MP or HP)
