@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.interpolate import interp1d
 
 # this function takes:
 # - the name of a code with given precision settings (in the input_4_cast respitory)
@@ -113,7 +114,7 @@ for i, param in enumerate(params):
         axs[i,0].loglog(kk[:],-dl[iz,:],'g--',linewidth=0.9)
         axs[i,1].loglog(kk[:],-dn[iz,:],'g--',linewidth=0.9)
 
-    kk,dl,dn = derivative('camb_w0wa_P1_bad_s8',param,0.01)
+    kk,dl,dn = derivative('camb_w0wa_P1',param,0.01)
     if logscale == False:
         axs[i,0].semilogx(kk[:],dl[iz,:],'c-',label='CAMB P1',linewidth=0.9)
         axs[i,1].semilogx(kk[:],dn[iz,:],'c-',linewidth=0.9)
@@ -164,21 +165,34 @@ for i, param in enumerate(params):
 
     axs[i,0].set_ylabel(latex_names[i])
 
-    axs[i,0].set_xlim(1.e-4,50.)
-    axs[i,1].set_xlim(1.e-4,50.)
+    axs[i,0].set_xlim(2.e-4,50.)
+    axs[i,1].set_xlim(2.e-4,50.)
 
     axs[i,0].axhline(0,1.e-4,50.,color='k',linestyle='--',linewidth=0.5)
     axs[i,1].axhline(0,1.e-4,50.,color='k',linestyle='--',linewidth=0.5)
 
-    if param == 'w0':
-        axs[i,0].set_ylim(-0.035,0.035)
-        axs[i,1].set_ylim(-0.035,0.035)
+    if param == 'Ob':
+        axs[i,0].set_ylim(-0.003,0.003)
+        axs[i,1].set_ylim(-0.003,0.003)
+    elif param == 'Om':
+        axs[i,0].set_ylim(-0.007,0.007)
+        axs[i,1].set_ylim(-0.007,0.007)
+    elif param == 'h':
+        axs[i,0].set_ylim(-0.15,0.15)
+        axs[i,1].set_ylim(-0.15,0.15)
+    elif param == 'ns':
+        axs[i,0].set_ylim(-0.002,0.002)
+        axs[i,1].set_ylim(-0.002,0.002)
+    elif param == 's8':
+        axs[i,0].set_ylim(-0.007,0.007)
+        axs[i,1].set_ylim(-0.007,0.007)
+    elif param == 'w0':
+        axs[i,0].set_ylim(-0.0012,0.0012)
+        axs[i,1].set_ylim(-0.0012,0.0012)
     elif param == 'wa':
-        axs[i,0].set_ylim(-0.018,0.018)
-        axs[i,1].set_ylim(-0.018,0.018)
-    else:
-        axs[i,0].set_ylim(-0.27,0.27)
-        axs[i,1].set_ylim(-0.27,0.27)
+        axs[i,0].set_ylim(-0.0006,0.0006)
+        axs[i,1].set_ylim(-0.0006,0.0006)
+
 
     #factor=1
     #if
@@ -190,37 +204,37 @@ for i, param in enumerate(params):
 
     kk,dl,dn = derivative('class_w0wa_DP',param,0.01)
     if logscale == False:
-        axs[i,0].semilogx(kk[:],dl[iz,:]-dl_ref[iz,:],'k-',label='CLASS DP - CLASS HP',linewidth=2)
-        axs[i,1].semilogx(kk[:],dn[iz,:]-dn_ref[iz,:],'k-',linewidth=2)
+        axs[i,0].semilogx(kk_ref[:],interp1d(kk,dl[iz,:],fill_value="extrapolate")(kk_ref[:])-dl_ref[iz,:],'k-',label='CLASS DP - CLASS HP',linewidth=2)
+        axs[i,1].semilogx(kk_ref[:],interp1d(kk,dn[iz,:],fill_value="extrapolate")(kk_ref[:])-dn_ref[iz,:],'k-',linewidth=2)
     else:
-        axs[i,0].loglog(kk[:],abs(dl[iz,:]/dl_ref[iz,:]),'k-',label='CLASS DP - CLASS HP',linewidth=2)
-        axs[i,1].loglog(kk[:],abs(dn[iz,:]/dn_ref[iz,:]),'k-',linewidth=2)
+        axs[i,0].loglog(kk_ref[:],abs(interp1d(kk,dl[iz,:],fill_value="extrapolate")(kk_ref[:])/dl_ref[iz,:]),'k-',label='CLASS DP - CLASS HP',linewidth=2)
+        axs[i,1].loglog(kk_ref[:],abs(interp1d(kk,dn[iz,:],fill_value="extrapolate")(kk_ref[:])/dn_ref[iz,:]),'k-',linewidth=2)
 
-    kk,dl,dn = derivative('camb_w0wa_P1_bad_s8',param,0.01)
+    kk,dl,dn = derivative('camb_w0wa_P1',param,0.01)
     if logscale == False:
-        axs[i,0].semilogx(kk[:],dl[iz,:]-dl_ref[iz,:],'c-',label='CAMB P1 - CLASS HP',linewidth=0.9)
-        axs[i,1].semilogx(kk[:],dn[iz,:]-dn_ref[iz,:],'c-',linewidth=0.9)
+        axs[i,0].semilogx(kk_ref[:],interp1d(kk,dl[iz,:],fill_value="extrapolate")(kk_ref[:])-dl_ref[iz,:],'c-',label='CAMB P1 - CLASS HP',linewidth=0.9)
+        axs[i,1].semilogx(kk_ref[:],interp1d(kk,dn[iz,:],fill_value="extrapolate")(kk_ref[:])-dn_ref[iz,:],'c-',linewidth=0.9)
     else:
-        axs[i,0].loglog(kk[:],abs(dl[iz,:]/dl_ref[iz,:]),'c-',label='CAMB P1 - CLASS HP',linewidth=0.9)
-        axs[i,1].loglog(kk[:],abs(dn[iz,:]/dn_ref[iz,:]),'c-',linewidth=0.9)
+        axs[i,0].loglog(kk_ref[:],abs(interp1d(kk,dl[iz,:],fill_value="extrapolate")(kk_ref[:])/dl_ref[iz,:]),'c-',label='CAMB P1 - CLASS HP',linewidth=0.9)
+        axs[i,1].loglog(kk_ref[:],abs(interp1d(kk,dn[iz,:],fill_value="extrapolate")(kk_ref[:])/dn_ref[iz,:]),'c-',linewidth=0.9)
 
     kk,dl,dn = derivative('camb_w0wa_P2',param,0.01)
     if logscale == False:
-        axs[i,0].semilogx(kk[:],dl[iz,:]-dl_ref[iz,:],'b-',label='CAMB P2 - CLASS HP',linewidth=0.9)
-        axs[i,1].semilogx(kk[:],dn[iz,:]-dn_ref[iz,:],'b-',linewidth=0.9)
+        axs[i,0].semilogx(kk_ref[:],interp1d(kk,dl[iz,:],fill_value="extrapolate")(kk_ref[:])-dl_ref[iz,:],'b-',label='CAMB P2 - CLASS HP',linewidth=0.9)
+        axs[i,1].semilogx(kk_ref[:],interp1d(kk,dn[iz,:],fill_value="extrapolate")(kk_ref[:])-dn_ref[iz,:],'b-',linewidth=0.9)
     else:
-        axs[i,0].loglog(kk[:],abs(dl[iz,:]/dl_ref[iz,:]),'b-',label='CAMB P2 - CLASS HP',linewidth=0.9)
-        axs[i,1].loglog(kk[:],abs(dn[iz,:]/dn_ref[iz,:]),'b-',linewidth=0.9)
+        axs[i,0].loglog(kk_ref[:],abs(interp1d(kk,dl[iz,:],fill_value="extrapolate")(kk_ref[:])/dl_ref[iz,:]),'b-',label='CAMB P2 - CLASS HP',linewidth=0.9)
+        axs[i,1].loglog(kk_ref[:],abs(interp1d(kk,dn[iz,:],fill_value="extrapolate")(kk_ref[:])/dn_ref[iz,:]),'b-',linewidth=0.9)
 
     kk,dl,dn = derivative('camb_w0wa_P3',param,0.01)
     if logscale == False:
-        axs[i,0].semilogx(kk[:],dl[iz,:]-dl_ref[iz,:],'r-',label='CAMB P3 - CLASS HP',linewidth=0.9)
-        axs[i,1].semilogx(kk[:],dn[iz,:]-dn_ref[iz,:],'r-',linewidth=0.9)
+        axs[i,0].semilogx(kk_ref[:],interp1d(kk,dl[iz,:],fill_value="extrapolate")(kk_ref[:])-dl_ref[iz,:],'r-',label='CAMB P3 - CLASS HP',linewidth=0.9)
+        axs[i,1].semilogx(kk_ref[:],interp1d(kk,dn[iz,:],fill_value="extrapolate")(kk_ref[:])-dn_ref[iz,:],'r-',linewidth=0.9)
     else:
-        axs[i,0].loglog(kk[:],abs(dl[iz,:]/dl_ref[iz,:]),'r-',label='CAMB P3 - CLASS HP',linewidth=0.9)
-        axs[i,1].loglog(kk[:],abs(dn[iz,:]/dn_ref[iz,:]),'r-',linewidth=0.9)
+        axs[i,0].loglog(kk_ref[:],abs(interp1d(kk,dl[iz,:],fill_value="extrapolate")(kk_ref[:])/dl_ref[iz,:]),'r-',label='CAMB P3 - CLASS HP',linewidth=0.9)
+        axs[i,1].loglog(kk_ref[:],abs(interp1d(kk,dn[iz,:],fill_value="extrapolate")(kk_ref[:])/dn_ref[iz,:]),'r-',linewidth=0.9)
 
-    if param == 's8':
+    if param == 'ns':
         axs[i,0].legend(loc='upper left')
 
 #plt.show()
