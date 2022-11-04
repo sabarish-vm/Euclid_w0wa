@@ -43,7 +43,18 @@ def fisher_path(dict) :
 
 def plotter(fish_files, labels, pars, outpath='automatic',
             script_name='automatic', error_only=False, compare_errors_dict=dict()):
-
+    compare_errors_dict_def={'ncol_legend':2, 
+                                  'xticksrotation':45,
+                                  'yticklabelsize': 26,
+                                  'xticklabelsize': 26,
+                                  'xtickfontsize': 26,
+                                  'yrang' : [-5., 5.],
+                                  'patches_legend_fontsize' : 30,
+                                  'dots_legend_fontsize' : 30,
+                                  'figsize' : (20,10),
+                                  'dpi': 150
+                                  }# 'legend_title_fontsize':16}
+    compare_errors_dict.update(compare_errors_dict_def)
     fish_files = [os.path.abspath(i) for i in fish_files] ## This is evaluated at old CWD
     os.chdir(os.path.dirname(os.path.realpath(__file__))) ## CWD changes
     sys.path.append('../../cosmicfish_reloaded/')
