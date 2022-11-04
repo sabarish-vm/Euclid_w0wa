@@ -34,7 +34,7 @@ names_mptocf={
 }
 
 labels_dict={
-'wa':'w_a', 'w0':'w_0','Omegab':'\Omega_\mathrm{b}', 'h':'h','ns':'n_s','sigma8':'\sigma_8','Omegam' : '\Omega_\mathrm{m}',
+'wa':'w_a', 'w0':'w_0','Omegab':'\Omega_{\mathrm{b},0}', 'h':'h','ns':'n_s','sigma8':'\sigma_8','Omegam' : '\Omega_{\mathrm{m},0}',
 'b1' : 'b_1','b2' : 'b_2', 'b3' : 'b_3', 'b4' : 'b_4', 'b5' : 'b_5','b6' : 'b_6','b7' : 'b_7','b8' : 'b_8','b9' : 'b_9','b10' : 'b_{10}',
 'AIA' : 'A_{\mathrm{IA}}', 'etaIA' :'\eta_\mathrm{IA}', 'betaIA' : '\beta_\mathrm{IA}',
 'lnbgs8_1' : '\ln(b_g \sigma_8)_1', 'lnbgs8_2' : '\ln(b_g \sigma_8)_2', 'lnbgs8_3' : '\ln(b_g \sigma_8)_3', 'lnbgs8_4' : '\ln(b_g \sigma_8)_4',

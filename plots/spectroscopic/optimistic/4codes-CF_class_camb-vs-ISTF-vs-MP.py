@@ -29,10 +29,16 @@ labels=  [
 
 cutnames=['Omegam', 'Omegab','ns', 'h','sigma8', 'w0', 'wa',  'lnbgs8_1', 'lnbgs8_2', 'lnbgs8_3', 'lnbgs8_4', 'Ps_1', 'Ps_2', 'Ps_3', 'Ps_4']
 
-transf_labels={'\\ln(b_g \\sigma_8)_1': r'b_{g1}',
-               '\\ln(b_g \\sigma_8)_2': r'b_{g2}',
-               '\\ln(b_g \\sigma_8)_3': r'b_{g3}',
-                '\\ln(b_g \\sigma_8)_4': r'b_{g4}'
+#transf_labels={'\\ln(b_g \\sigma_8)_1': r'b_{g1}',
+#               '\\ln(b_g \\sigma_8)_2': r'b_{g2}',
+#               '\\ln(b_g \\sigma_8)_3': r'b_{g3}',
+#                '\\ln(b_g \\sigma_8)_4': r'b_{g4}'
+#               }
+
+transf_labels={'\\ln(b_g \\sigma_8)_1': r'\ln(b_1 \sigma_8(z_1))',
+               '\\ln(b_g \\sigma_8)_2': r'\ln(b_2 \sigma_8(z_2))',
+               '\\ln(b_g \\sigma_8)_3': r'\ln(b_3 \sigma_8(z_3))',
+               '\\ln(b_g \\sigma_8)_4': r'\ln(b_4 \sigma_8(z_4))'
                }
 
 compare_errors_dict={'ncol_legend':4, 'legend_title':'GCsp opt', 'xticksrotation':45, 'transform_latex_dict': transf_labels}# 'legend_title_fontsize':16}
