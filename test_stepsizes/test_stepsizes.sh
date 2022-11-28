@@ -21,7 +21,7 @@ echo "Do $PROBE_SHORT $CASE_SHORT $PRECISION [1/8]? (y/n)"
 read answer
 if [ "$answer" = "y" ] ; then
     rm data/$PROBE_FIDUCIAL
-    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/{$CASE}_$PRECISION
+    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION
     python3 montepython/MontePython.py run -p ../Euclid_w0wa/test_stepsizes/${PROBE}_${CASE_SHORT}_$PRECISION.param -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION -f 0
     python3 montepython/MontePython.py run -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION --method FvS
 fi
@@ -37,7 +37,7 @@ echo "Do $PROBE_SHORT $CASE_SHORT $PRECISION [2/8]? (y/n)"
 read answer
 if [ "$answer" = "y" ] ; then
     rm data/$PROBE_FIDUCIAL
-    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/{$CASE}_$PRECISION
+    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION
     python3 montepython/MontePython.py run -p ../Euclid_w0wa/test_stepsizes/${PROBE}_${CASE_SHORT}_$PRECISION.param -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION -f 0
     python3 montepython/MontePython.py run -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION --method FvS
 fi
@@ -53,7 +53,7 @@ echo "Do $PROBE_SHORT $CASE_SHORT $PRECISION [3/8]? (y/n)"
 read answer
 if [ "$answer" = "y" ] ; then
     rm data/$PROBE_FIDUCIAL
-    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/{$CASE}_$PRECISION
+    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION
     python3 montepython/MontePython.py run -p ../Euclid_w0wa/test_stepsizes/${PROBE}_${CASE_SHORT}_$PRECISION.param -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION -f 0
     python3 montepython/MontePython.py run -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION --method FvS
 fi
@@ -69,7 +69,7 @@ echo "Do $PROBE_SHORT $CASE_SHORT $PRECISION [4/8]? (y/n)"
 read answer
 if [ "$answer" = "y" ] ; then
     rm data/$PROBE_FIDUCIAL
-    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/{$CASE}_$PRECISION
+    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION
     python3 montepython/MontePython.py run -p ../Euclid_w0wa/test_stepsizes/${PROBE}_${CASE_SHORT}_$PRECISION.param -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION -f 0
     python3 montepython/MontePython.py run -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION --method FvS
 fi
@@ -85,7 +85,7 @@ echo "Do $PROBE_SHORT $CASE_SHORT $PRECISION [5/8]? (y/n)"
 read answer
 if [ "$answer" = "y" ] ; then
     rm data/$PROBE_FIDUCIAL
-    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/{$CASE}_$PRECISION
+    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION
     python3 montepython/MontePython.py run -p ../Euclid_w0wa/test_stepsizes/${PROBE}_${CASE_SHORT}_$PRECISION.param -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION -f 0
     python3 montepython/MontePython.py run -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION --method FvS
 fi
@@ -101,7 +101,7 @@ echo "Do $PROBE_SHORT $CASE_SHORT $PRECISION [6/8]? (y/n)"
 read answer
 if [ "$answer" = "y" ] ; then
     rm data/$PROBE_FIDUCIAL
-    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/{$CASE}_$PRECISION
+    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION
     python3 montepython/MontePython.py run -p ../Euclid_w0wa/test_stepsizes/${PROBE}_${CASE_SHORT}_$PRECISION.param -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION -f 0
     python3 montepython/MontePython.py run -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION --method FvS
 fi
@@ -117,7 +117,7 @@ echo "Do $PROBE_SHORT $CASE_SHORT $PRECISION [7/8]? (y/n)"
 read answer
 if [ "$answer" = "y" ] ; then
     rm data/$PROBE_FIDUCIAL
-    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/{$CASE}_$PRECISION
+    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION
     python3 montepython/MontePython.py run -p ../Euclid_w0wa/test_stepsizes/${PROBE}_${CASE_SHORT}_$PRECISION.param -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION -f 0
     python3 montepython/MontePython.py run -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION --method FvS
 fi
@@ -133,7 +133,7 @@ echo "Do $PROBE_SHORT $CASE_SHORT $PRECISION [8/8]? (y/n)"
 read answer
 if [ "$answer" = "y" ] ; then
     rm data/$PROBE_FIDUCIAL
-    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/{$CASE}_$PRECISION
+    rm -rf ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION
     python3 montepython/MontePython.py run -p ../Euclid_w0wa/test_stepsizes/${PROBE}_${CASE_SHORT}_$PRECISION.param -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION -f 0
     python3 montepython/MontePython.py run -o ../Euclid_w0wa/test_stepsizes/$PROBE/${CASE}_$PRECISION --method FvS
 fi
