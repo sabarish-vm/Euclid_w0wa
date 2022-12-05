@@ -35,11 +35,6 @@ cutnames=['Omegam', 'Omegab','ns', 'h','sigma8', 'w0', 'wa',  'lnbgs8_1', 'lnbgs
 #                '\\ln(b_g \\sigma_8)_4': r'b_{g4}'
 #               }
 
-transf_labels={'\\ln(b_g \\sigma_8)_1': r'\ln(b_1 \sigma_8(z_1))',
-               '\\ln(b_g \\sigma_8)_2': r'\ln(b_2 \sigma_8(z_2))',
-               '\\ln(b_g \\sigma_8)_3': r'\ln(b_3 \sigma_8(z_3))',
-               '\\ln(b_g \\sigma_8)_4': r'\ln(b_4 \sigma_8(z_4))'
-               }
 
-compare_errors_dict={'ncol_legend':4, 'legend_title':'GCsp opt', 'xticksrotation':45, 'transform_latex_dict': transf_labels}# 'legend_title_fontsize':16}
+compare_errors_dict={'ncol_legend':4, 'legend_title':'GCsp opt', 'xticksrotation':45, 'yrang':[-10,10]} #'transform_latex_dict': transf_labels}# 'legend_title_fontsize':16}
 plotter(fish_files=fish_files,labels=labels,pars=cutnames,error_only=error_only, compare_errors_dict=compare_errors_dict)
