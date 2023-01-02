@@ -34,7 +34,7 @@ def derivative(case,param,step):
 #########
 
 params = ['Ob','Om','h','ns','s8','w0','wa']
-latex_names = ['$\Omega_b$','$\Omega_m$','$h$','$n_s$','$\sigma_8$','$w_0$','$w_a$']
+latex_names = ['$\Omega_{\mathrm{b},0}$','$\Omega_{\mathrm{m},0}$','$h$','$n_\mathrm{s}$','$\sigma_8$','$w_0$','$w_a$']
 
 param_num = len(params)
 
@@ -48,8 +48,8 @@ logscale = False
 for i, param in enumerate(params):
 
     if i == 0:
-        axs[i,0].set_title(r'$\partial_\alpha \ln P_L(k,z=0)$')
-        axs[i,1].set_title(r'$\partial_\alpha \ln P_{NL}(k,z=0)$')
+        axs[i,0].set_title(r'$\partial_\alpha \ln P_\mathrm{L}(k,z=0)$')
+        axs[i,1].set_title(r'$\partial_\alpha \ln P_\mathrm{NL}(k,z=0)$')
     if i == param_num-1:
         axs[i,0].set_xlabel(r'$k$   (1/Mpc)')
         axs[i,1].set_xlabel(r'$k$   (1/Mpc)')
@@ -157,8 +157,8 @@ logscale = False
 for i, param in enumerate(params):
 
     if i == 0:
-        axs[i,0].set_title(r'$\Delta [\partial_\alpha \ln P_L(k,z=0)]$')
-        axs[i,1].set_title(r'$\Delta [\partial_\alpha \ln P_{NL}(k,z=0)]$')
+        axs[i,0].set_title(r'$\Delta [\partial_\alpha \ln P_\mathrm{L}(k,z=0)]$')
+        axs[i,1].set_title(r'$\Delta [\partial_\alpha \ln P_\mathrm{NL}(k,z=0)]$')
     if i == param_num-1:
         axs[i,0].set_xlabel(r'$k$   (1/Mpc)')
         axs[i,1].set_xlabel(r'$k$   (1/Mpc)')
