@@ -10,17 +10,19 @@ if True:
 
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, sharex=True, sharey=True, figsize=(6, 6))
 
+    fig.subplots_adjust(hspace=0,wspace=0)
+
     ######################
 
-    ymin=-0.1
-    ymax=0.4
+    ymin=-0.15
+    ymax=0.45
 
     ax1.set_ylim(ymin,ymax)
 
     ######################
 
     ax1.set_ylabel(r'error on $F_{w_0\,w_a}$ (%)')
-    ax1.set_xlim(0.,0.4)
+    ax1.set_xlim(-0.05,0.35)
 
     DP = np.loadtxt('photometric/pessimistic_DP/d2L_dw0_dwa.dat')
     HP = np.loadtxt('photometric/pessimistic_HP/d2L_dw0_dwa.dat')
@@ -46,8 +48,8 @@ if True:
 
     ######################
 
-    ymin=-0.1
-    ymax=0.4
+    ymin=-0.15
+    ymax=0.45
 
     ax3.set_ylim(ymin,ymax)
 
