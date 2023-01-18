@@ -17,8 +17,8 @@ fish_files =  [
     '../../../results/cosmicfish_external/photometric/pessimistic/CosmicFish_v0.9_w0wa_external_camb-Pessimistic-3PT_P3_WLGCph_fishermatrix.txt'
               ]
 
-labels=  [r'CF_int_class XCph opt',
-          r'CF_ext_camb Xcph opt']
+labels=  [r'CF/int/CLASS XCph opt',
+          r'CF/ext/CAMB Xcph opt']
 
 cutnames=['Omegam', 'Omegab', 'ns', 'h','sigma8','w0', 'wa', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
 

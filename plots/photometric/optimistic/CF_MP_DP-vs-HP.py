@@ -16,8 +16,8 @@ fish_files =  [
     '../../../results/montepython_fisher/photometric/optimistic_HP/fisher.mat'
               ]
 
-labels = [r'MP XCph opt DP',
-          r'MP XCph opt HP' ]
+labels = [r'MP/Fisher DP',
+          r'MP/Fisher HP' ]
 
 cutnames=['Omegam', 'Omegab', 'ns', 'h','sigma8','w0', 'wa', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
 

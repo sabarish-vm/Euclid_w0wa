@@ -17,7 +17,7 @@ fish_files =  [
     '../../../results/montepython_fisher/spectroscopic/optimistic_HP/fisher.mat'
               ]
 
-labels=  [r'CF_ext_class GCsp opt',
+labels=  [r'CF/ext/CLASS GCsp opt',
           r'MP GCsp opt']
 
 cutnames=['Omegam', 'Omegab','ns', 'h','sigma8', 'w0', 'wa',  'lnbgs8_1', 'lnbgs8_2', 'lnbgs8_3', 'lnbgs8_4', 'Ps_1', 'Ps_2', 'Ps_3', 'Ps_4']

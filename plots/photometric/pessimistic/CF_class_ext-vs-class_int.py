@@ -17,8 +17,8 @@ fish_files =  [
     '../../../results/cosmicfish_internal/photometric/pessimistic/CosmicFish_v0.9_w0wa_internal_class-Pessimistic-3PT_WLGCph_fishermatrix.txt'
               ]
 
-labels=  [r'CF_ext_class GCsp pess',
-          r'CF_int_class GCsp pess']
+labels=  [r'CF/ext/CLASS GCsp pess',
+          r'CF/int/CLASS GCsp pess']
 
 cutnames=['Omegam', 'Omegab', 'ns', 'h','sigma8','w0', 'wa', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
 

@@ -20,11 +20,10 @@ fish_files =  [
               ]
 
 labels=  [
-         r'CF class INT',
-         r'CF camb INT',
-          r'MP'
-          ,
-          r'SOAPFish'
+         r'CF/int/CLASS',
+         r'CF/int/CAMB',
+         r'MP/Fisher',
+         r'SF'
           ]
 
 cutnames=['Omegam', 'Omegab','ns', 'h','sigma8', 'w0', 'wa',  'lnbgs8_1', 'lnbgs8_2', 'lnbgs8_3', 'lnbgs8_4', 'Ps_1', 'Ps_2', 'Ps_3', 'Ps_4']
@@ -36,5 +35,7 @@ cutnames=['Omegam', 'Omegab','ns', 'h','sigma8', 'w0', 'wa',  'lnbgs8_1', 'lnbgs
 #               }
 
 
-compare_errors_dict={'ncol_legend':4, 'legend_title':'GCsp pess', 'xticksrotation':45, 'yrang':[-10,10]} #'transform_latex_dict': transf_labels # 'legend_title_fontsize':16}
+compare_errors_dict={'ncol_legend':4, 'legend_title':'GCsp pess', 'xticksrotation':45, 'yrang':[-10,10],
+'dots_legend_fontsize' : 30
+} #'transform_latex_dict': transf_labels # 'legend_title_fontsize':16}
 plotter(fish_files=fish_files,labels=labels,pars=cutnames,error_only=error_only, compare_errors_dict=compare_errors_dict)

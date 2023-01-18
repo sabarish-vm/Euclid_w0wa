@@ -18,7 +18,7 @@ fish_files =  [
     '../../../results/montepython_fisher/photometric/pessimistic_HP/fisher.mat'
               ]
 
-labels = [r'CF_int_camb XCph pess',
+labels = [r'CF/int/CAMB XCph pess',
           r'MP XCph pess' ]
 
 cutnames=['Omegam', 'Omegab', 'ns', 'h','sigma8','w0', 'wa', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
