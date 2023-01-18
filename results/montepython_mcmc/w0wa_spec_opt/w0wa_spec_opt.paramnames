@@ -1,0 +1,15 @@
+w0    w_0    -1.0
+wa    w_a    0.0
+Omegab    \Omega_{{\rm b}, 0}    0.05
+h    h    0.67
+ns    n_{\rm s}    0.960000
+sigma8    \sigma8    0.815584
+Omegam    \Omega_{{\rm m}, 0}    0.32
+P_shot0    P_{shot0 }    0.000000 
+P_shot1    P_{shot1 }    0.000000
+P_shot2    P_{shot2 }    0.000000
+P_shot3    P_{shot3 }    0.000000
+lnbsigma8_0    lnb\sigma8_{0 }    -0.325399
+lnbsigma8_1    lnb\sigma8_{1 }    -0.315880
+lnbsigma8_2    lnb\sigma8_{2 }    -0.311505
+lnbsigma8_3    lnb\sigma8_{3 }    -0.320140

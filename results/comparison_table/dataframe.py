@@ -7,11 +7,14 @@ import os
 outpath = os.path.realpath(__file__)
 
 types = ['All Pars', 'Cosmo with fixed Nuisance', 'Cosmo with marginalized Nuisance', 'Nuisance with fixed Nuisance']
-codes = ['Class EXT','Class INT','MP','Camb EXT' , 'Camb INT']
+codes = [r'\texttt{CLASS ext}', r'\texttt{CLASS int}', r'\texttt{MontePython}', r'\texttt{CAMB ext}' , r'\texttt{CAMB int}']
 types_dict = {'All Pars':'cosmo_and_nuisance', 'Cosmo with fixed Nuisance' : 'cosmo_fix_nuisance',
 'Cosmo with marginalized Nuisance' : 'cosmo_marg_nuisance', 'Nuisance with fixed Nuisance' :  'nuisance_fix_cosmo'  }
-name_to_cell = {'Class EXT':'class_ext','Class INT' : 'class_int', 'MP':'MP',
-'Camb EXT' : 'camb_ext','Camb INT' : 'camb_int'}
+name_to_cell = {r'\texttt{CLASS ext}':'class_ext',
+                r'\texttt{CLASS int}' : 'class_int', 
+                r'\texttt{MontePython}':'MP', 
+                r'\texttt{CAMB ext}' : 'camb_ext', 
+                r'\texttt{CAMB int}' : 'camb_int'}
 all_combinations = list(cb(codes,2))
 
 greenmap = ListedColormap(cm.get_cmap('Greens')(np.linspace(0,1,500))[250:400])
@@ -44,9 +47,13 @@ def save_table(df,filename,save=True) :
     ax.axis('tight')
     ax.axis('off')
     cellcolors = np.vectorize(hexcolor)(np.copy(vals),mapper_green)
-    the_table=ax.table(cellText=vals, rowLabels=df.columns, colLabels=df.columns,
+    rowlabs=[r'${\tt CF/ext/CLASS}$', r'${\tt CF/int/CLASS}$', r'${\tt MP/Fisher}$', r'${\tt CF/ext/CAMB}$' , r'${\tt CF/int/CAMB}$']
+    the_table=ax.table(cellText=vals, rowLabels=rowlabs, colLabels=rowlabs,
                         loc='center',
-                        cellColours=cellcolors,
+                        cellColours=cellcolors
                         )
+    the_table.auto_set_font_size(False)
+    the_table.scale(2.2,2)
+    the_table.set_fontsize(12)
     if save : fig.savefig('table_'+filename+'.pdf',bbox_inches = 'tight')
     return fig,ax
