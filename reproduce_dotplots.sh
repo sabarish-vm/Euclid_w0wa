@@ -27,7 +27,7 @@ CASE_SHORT=pess
 # Select here the precision
 CLASS_PREC=HP
 CAMB_PREC=P3
-
+argu=$1
 # placeholder for running optionally input_4_cast
 for PROBE in photometric spectroscopic
 do
@@ -81,6 +81,17 @@ if [ "$answer" = "y" ] ; then
         $PYTHON $PROBE/$CASE/4codes-CF_class_camb-vs-ISTF-vs-MP.py --error-only
         # keep error comparison plot for the paper
         #
+        $PYTHON $PROBE/$CASE/CF_class_ext_DP-vs-HP.py --error-only
+        ##
+        $PYTHON $PROBE/$CASE/CF_camb_ext_P2-vs-P3.py --error-only
+        #
+#        $PYTHON $PROBE/$CASE/CF_MP_DP-vs-HP.py --error-only
+        #
+        $PYTHON $PROBE/$CASE/CF_class_ext_DP-vs-HP.py --error-only
+        #
+        $PYTHON $PROBE/$CASE/CF_camb_ext_P2-vs-P3.py --error-only
+        #
+ #       $PYTHON $PROBE/$CASE/CF_MP_DP-vs-HP.py --error-only
         cd ..
 
 
