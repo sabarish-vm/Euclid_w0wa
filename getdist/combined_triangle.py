@@ -46,14 +46,20 @@ def combined_triangle(case1,case2):
     gauss6=GaussianND(mean=cf3.fiducials, cov=mp3.fishermatrix, names=mp3.paramnames,labels=cf3.labels,is_inv_cov=True)
 
     ## Cosmo Triangle
+    plot_settings.legend_fontsize = 28
+    plot_settings.legend_loc = 'upper right'
+    plot_settings.figure_legend_loc = 'upper right'
     g = plots.get_subplot_plotter(settings=plot_settings)
-    g.triangle_plot([gauss1,gauss2,gauss3,gauss4,gauss5,gauss6],filled=[False,False,False,False,False,False],params=cf1.cosmonames,legend_labels=['CosmicFish: photo/%s'%(case1_short),'CosmicFish: spectro/%s'%(case2_short),'CosmicFish: combined','MontePython/Fisher: photo/%s'%(case1_short),'MontePython/Fisher: spectro/%s'%(case2_short),'MontePython/Fisher: combined'],contour_lws=[1,1,2,1,1,1,1],contour_ls=[':',':',':','-','-','-'],contour_colors=['k','b','r','k','b','r'])
+    g.triangle_plot([gauss1,gauss2,gauss3,gauss4,gauss5,gauss6],filled=[False,False,False,False,False,False],params=cf1.cosmonames,
+    legend_labels=[r'${\tt CF/int/CLASS}$: photo/%s'%(case1_short), r'${\tt CF/int/CLASS}$: spectro/%s'%(case2_short), r'${\tt CF/int/CLASS}$: combined',
+    r'${\tt MP/Fisher}$: photo/%s'%(case1_short), r'${\tt MP/Fisher}$: spectro/%s'%(case2_short), r'${\tt MP/Fisher}$: combined'],
+    contour_lws=[2,2,2,1,1,1,1],contour_ls=[':',':',':','-','-','-'],contour_colors=['k','b','r','k','b','r'])
     g.export('./combined_%s_%s_cosmo.pdf'%(case1_short,case2_short))
     print('Combined %s %s triangle finished'%(case1_short,case2_short))
     del g
 
     return
-
+import sys
 combined_triangle('pessimistic','pessimistic')
 combined_triangle('pessimistic','optimistic')
 combined_triangle('optimistic','pessimistic')

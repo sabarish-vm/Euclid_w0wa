@@ -26,23 +26,31 @@ mp1 = Fisher('../results/montepython_fisher/spectroscopic/optimistic_HP/fisher.m
 gauss=GaussianND(mean=mp1.fiducials, cov=mp1.fishermatrix ,names=mp1.paramnames,labels=mp1.labels,is_inv_cov=True)
 gauss2=GaussianND(mean=cf1.fiducials, cov=cf1.fishermatrix,names=cf1.paramnames,labels=cf1.labels,is_inv_cov=True)
 
+legends = [r'${\tt MP/MCMC}$',r'${\tt MP/Fisher}$',r'${\tt CF/int/CLASS}$']
+clws=[1,3,3]
 ## Cosmo Triangle
 g = plots.get_subplot_plotter(settings=plot_settings)
-g.triangle_plot([mcmc1.samples,gauss,gauss2],filled=[True,False,False],params=cf1.cosmonames,legend_labels=['MCMC','MP-Fisher','CF-Fisher'],contour_lws=[1,2,2])
+g.triangle_plot([mcmc1.samples,gauss,gauss2],filled=[True,False,False],params=cf1.cosmonames,legend_labels=legends,contour_lws=clws)
 g.export('./GCsp_Opt_cosmo.pdf')
 print('Cosmo triangle finished')
 del g
 
 ## Nuisance Triangle
+plot_settings.axes_labelsize = 32
 g = plots.get_subplot_plotter(settings=plot_settings)
-g.triangle_plot([mcmc1.samples,gauss,gauss2],filled=[True,False,False],params=cf1.nuisancenames,legend_labels=['MCMC','MP-Fisher','CF-Fisher'],contour_lws=[1,2,2])
+g.triangle_plot([mcmc1.samples,gauss,gauss2],filled=[True,False,False],params=cf1.nuisancenames,legend_labels=legends,contour_lws=clws)
+g.rotate_xticklabels(rotation=45)
+g.rotate_yticklabels(rotation=45)
 g.export('./GCsp_Opt_nuisance.pdf')
 print('Nuisance triangle finished')
 del g
 
 ## Cosmo-Nuisance Rectangle
+plot_settings.axes_labelsize = 32
 g = plots.get_subplot_plotter(settings=plot_settings)
-g.rectangle_plot(cf1.cosmonames,cf1.nuisancenames,roots=[mcmc1.samples,gauss,gauss2],filled=[True,False,False],legend_labels=['MCMC','MP-Fisher','CF-Fisher'],contour_lws=[1,2,2])
+g.rectangle_plot(cf1.cosmonames,cf1.nuisancenames,roots=[mcmc1.samples,gauss,gauss2],filled=[True,False,False],legend_labels=legends,contour_lws=clws)
+g.rotate_xticklabels(rotation=45)
+g.rotate_yticklabels(rotation=45)
 g.export('./GCsp_Opt_cross.pdf')
 print('Cross-terms rectangle finished')
 del g
