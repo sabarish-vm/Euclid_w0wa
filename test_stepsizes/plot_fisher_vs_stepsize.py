@@ -12,6 +12,14 @@ if True:
 
     fig.subplots_adjust(hspace=0,wspace=0)
 
+    ax1.tick_params(axis="both",which="both",direction="in",left="on",right="on",top="on",bottom="on")
+    ax2.tick_params(axis="both",which="both",direction="in",left="on",right="on",top="on",bottom="on")
+    ax3.tick_params(axis="both",which="both",direction="in",left="on",right="on",top="on",bottom="on")
+    ax4.tick_params(axis="both",which="both",direction="in",left="on",right="on",top="on",bottom="on")
+
+    ax2.tick_params(labelleft=False)
+    ax4.tick_params(labelleft=False)
+
     ######################
 
     ymin=-0.15
