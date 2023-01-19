@@ -16,9 +16,11 @@ fish_files =  [
     '../../../results/montepython_fisher/spectroscopic/pessimistic_HP/fisher.mat'
               ]
 
-labels=  [r'CF/ext/CAMB GCsp pess',
-          r'MP GCsp pess']
+labels=  [r'${\tt CF/ext/CAMB}$',
+          r'${\tt MP/Fisher}$']
 
 cutnames=['Omegam', 'Omegab','ns', 'h','sigma8', 'w0', 'wa',  'lnbgs8_1', 'lnbgs8_2', 'lnbgs8_3', 'lnbgs8_4', 'Ps_1', 'Ps_2', 'Ps_3', 'Ps_4']
 
-plotter(fish_files=fish_files,labels=labels,pars=cutnames,error_only=error_only)
+compare_errors_dict={'legend_title':'GCsp pess'}
+plotter(fish_files=fish_files,labels=labels,pars=cutnames,
+        error_only=error_only, compare_errors_dict=compare_errors_dict)

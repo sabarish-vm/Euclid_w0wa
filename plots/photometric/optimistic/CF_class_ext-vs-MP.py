@@ -16,9 +16,11 @@ fish_files =  [
     '../../../results/montepython_fisher/photometric/optimistic_HP/fisher.mat'
               ]
 
-labels = [r'CF/ext/CLASS XCph opt',
-          r'MP/Fisher' ]
+labels = [r'${\tt CF/ext/CLASS}$',
+          r'${\tt MP/Fisher}$' ]
 
 cutnames=['Omegam', 'Omegab', 'ns', 'h','sigma8','w0', 'wa', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
 
-plotter(fish_files=fish_files,labels=labels,pars=cutnames,error_only=error_only)
+compare_errors_dict={'legend_title':'XCph opt'}
+plotter(fish_files=fish_files,labels=labels,pars=cutnames,
+        error_only=error_only, compare_errors_dict=compare_errors_dict)

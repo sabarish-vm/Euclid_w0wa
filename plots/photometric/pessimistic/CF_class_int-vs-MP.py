@@ -17,9 +17,12 @@ fish_files =  [
     '../../../results/montepython_fisher/photometric/pessimistic_HP/fisher.mat'
               ]
 
-labels = [r'CF/int/CLASS XCph pess',
-          r'MP XCph pess' ]
+labels = [r'${\tt CF/int/CLASS}$',
+          r'${\tt MP/Fisher}$' ]
 
 cutnames=['Omegam', 'Omegab', 'ns', 'h','sigma8','w0', 'wa', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
 
+compare_errors_dict={'legend_title':'XCph pess'}
+plotter(fish_files=fish_files,labels=labels,pars=cutnames,
+        error_only=error_only, compare_errors_dict=compare_errors_dict)
 plotter(fish_files=fish_files,labels=labels,pars=cutnames,error_only=error_only)

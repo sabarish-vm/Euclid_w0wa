@@ -16,9 +16,11 @@ fish_files =  [
     '../../../results/cosmicfish_external/spectroscopic/optimistic/CosmicFish_v0.9_w0wa_external_camb-Optimistic-own_P3_GCsp_fishermatrix.txt'
               ]
 
-labels=  [r'CF/int/CLASS GCsp opt',
-          r'CF/ext/CAMB GCsp opt']
+labels=  [r'${\tt CF/int/CLASS}$',
+          r'${\tt CF/ext/CAMB}$']
 
 cutnames=['Omegam', 'Omegab','ns', 'h','sigma8', 'w0', 'wa',  'lnbgs8_1', 'lnbgs8_2', 'lnbgs8_3', 'lnbgs8_4', 'Ps_1', 'Ps_2', 'Ps_3', 'Ps_4']
 
-plotter(fish_files=fish_files,labels=labels,pars=cutnames,error_only=error_only)
+compare_errors_dict={'legend_title':'GCsp opt'}
+plotter(fish_files=fish_files,labels=labels,pars=cutnames,
+        error_only=error_only, compare_errors_dict=compare_errors_dict)

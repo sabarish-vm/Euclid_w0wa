@@ -20,16 +20,15 @@ fish_files =  [
               ]
 
 labels = [
-         r'CF/int/CLASS',
-         r'CF/int/CAMB',
-         r'MP/Fisher',
-         r'IST:F'
+         r'${\tt CF/int/CLASS}$',
+         r'${\tt CF/int/CAMB}$',
+         r'${\tt MP/Fisher}$',
+         r'${\tt IST:F}$'
         ]
 
 cutnames=['Omegam', 'Omegab', 'ns', 'h','sigma8','w0', 'wa', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
 
 compare_errors_dict={'ncol_legend':4, 'legend_title':'XCph pess', 'xticksrotation':45, 'yrang':[-10,10],
-                     'dots_legend_fontsize' : 30} 
-# 'legend_title_fontsize':16}
+                     'dots_legend_fontsize' : 28, 'legend_title_fontsize':28}
 
 plotter(fish_files=fish_files,labels=labels,pars=cutnames,error_only=error_only, compare_errors_dict=compare_errors_dict)

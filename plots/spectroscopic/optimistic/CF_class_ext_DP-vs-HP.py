@@ -16,8 +16,8 @@ fish_files =  [
     '../../../results/cosmicfish_external/spectroscopic/optimistic/CosmicFish_v0.9_w0wa_external_class-Optimistic-own_HP_GCsp_fishermatrix.txt'
               ]
 
-labels=  [r'CF/ext/CLASS DP',
-          r'CF/ext/CLASS HP']
+labels=  [r'${\tt CF/ext/CLASS}$ DP',
+          r'${\tt CF/ext/CLASS}$ HP']
 
 cutnames=['Omegam', 'Omegab','ns', 'h','sigma8','w0', 'wa', 'lnbgs8_1', 'lnbgs8_2', 'lnbgs8_3', 'lnbgs8_4', 'Ps_1', 'Ps_2', 'Ps_3', 'Ps_4']
 

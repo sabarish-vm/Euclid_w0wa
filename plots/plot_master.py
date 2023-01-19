@@ -59,8 +59,8 @@ def plotter(fish_files, labels, pars, outpath='automatic',
                                   'dots_legend_fontsize' : 36,
                                   'figsize' : (20,10),
                                   'dpi': 150,
-                                  'transform_latex_dict': transf_labels
-                                  }# 'legend_title_fontsize':16}
+                                  'transform_latex_dict': transf_labels,
+                                  'legend_title_fontsize':28}
     compare_errors_dict_def.update(compare_errors_dict)
     compare_errors_dict = compare_errors_dict_def.copy()
     fish_files = [os.path.abspath(i) for i in fish_files] ## This is evaluated at old CWD

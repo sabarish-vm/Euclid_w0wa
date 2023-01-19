@@ -17,9 +17,11 @@ fish_files =  [
     '../../../results/cosmicfish_internal/photometric/pessimistic/CosmicFish_v0.9_w0wa_internal_camb-Pessimistic-3PT_WLGCph_fishermatrix.txt'
               ]
 
-labels = [r'CF/ext/CAMB XCph pess',
-          r'CF/int/CAMB XCph pess' ]
+labels = [r'${\tt CF/ext/CAMB}$',
+          r'${\tt CF/int/CAMB}$' ]
 
 cutnames=['Omegam', 'Omegab', 'ns', 'h','sigma8','w0', 'wa', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8', 'b9', 'b10','AIA', 'etaIA']
 
-plotter(fish_files=fish_files,labels=labels,pars=cutnames,error_only=error_only)
+compare_errors_dict={'legend_title':'XCph pess'}
+plotter(fish_files=fish_files,labels=labels,pars=cutnames,
+        error_only=error_only, compare_errors_dict=compare_errors_dict)
