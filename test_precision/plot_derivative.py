@@ -1,6 +1,22 @@
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
+
+
+matplotlib.rcParams.update({'font.size': 12})
+matplotlib.rcParams.update({'font.family' : 'cm'})
+params = {'mathtext.fontset': 'cm',
+          'mathtext.rm': 'serif',
+          'mathtext.bf': 'serif:bold',
+          'mathtext.it': 'serif:italic',
+          'mathtext.sf': 'sans\-serif',
+          'text.usetex': False,
+          'font.family': 'serif',
+          'font.weight': 'normal',
+          'font.serif': 'Computer Modern'}
+matplotlib.rcParams.update(params)
+matplotlib.rcParams['text.usetex']
 
 # this function takes:
 # - the name of a code with given precision settings (in the input_4_cast respitory)
