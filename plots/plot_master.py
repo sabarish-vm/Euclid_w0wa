@@ -57,8 +57,8 @@ def plotter(fish_files, labels, pars, outpath='automatic',
                                   'yrang' : [-5., 5.],
                                   'patches_legend_fontsize' : 32,
                                   'dots_legend_fontsize' : 36,
-                                  'figsize' : (20,10),
-                                  'dpi': 150,
+                                  'figsize' : (18,9),
+                                  'dpi': 100,
                                   'transform_latex_dict': transf_labels,
                                   'legend_title_fontsize':28}
     compare_errors_dict_def.update(compare_errors_dict)
