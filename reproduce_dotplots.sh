@@ -29,6 +29,11 @@ CLASS_PREC=HP
 CAMB_PREC=P3
 argu=$1
 # placeholder for running optionally input_4_cast
+
+cd plots
+
+$PYTHON lineplots.py
+
 for PROBE in photometric spectroscopic
 do
 for CASE in pessimistic optimistic
@@ -41,7 +46,6 @@ if [ "$answer" = "y" ] ; then
 
 
         # plot error comparisons
-        cd plots
         #
         # uncomment if you prefer old files to be removed rather than overwritten
         #rm $PROBE/$CASE/*.txt
